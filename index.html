@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Ximena Molina</title>
+
+    <!-- Tailwind CSS (Para el diseño y colores) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome (Para los íconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Alpine.js (Para darle interactividad sencilla sin usar React) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Evita que se vea el código mientras carga */
+        [x-cloak] { display: none !important; }
+        
+        /* Estilo base para todas las tarjetas blancas */
+        .tarjeta {
+            background-color: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 15px 40px -15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<!-- x-data conecta el diseño con los datos que están hasta abajo del código -->
+<body class="bg-[#f4f5f7] text-gray-800 font-sans min-h-screen flex" x-data="misDatosRedes">
+
+    <!-- MENÚ LATERAL -->
+    <aside class="w-64 bg-white flex flex-col py-8 px-4 shadow-[10px_0_30px_rgba(0,0,0,0.02)] z-10 shrink-0">
+        <div class="px-4 mb-12">
+            <h1 class="font-extrabold text-xl text-gray-900 tracking-tight">Dashboard</h1>
+            <p class="text-xs text-gray-400 font-medium mt-1">Ximena Molina</p>
+        </div>
+
+        <nav class="space-y-2 flex-1">
+            <p class="text-[10px] font-bold text-gray-300 uppercase tracking-widest px-4 mb-4">Plataformas</p>
+            
+            <!-- Botón General -->
+            <button @click="pestaña = 'general'" :class="pestaña === 'general' ? 'bg-[#7A1C30] text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all font-medium text-sm">
+                <i class="fa-solid fa-chart-line w-5 text-center"></i> General
+            </button>
+
+            <!-- Botón Instagram -->
+            <button @click="pestaña = 'instagram'" :class="pestaña === 'instagram' ? 'bg-[#7A1C30] text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all font-medium text-sm">
+                <i class="fa-brands fa-instagram w-5 text-center text-lg"></i> Instagram
+            </button>
+
+            <!-- Botón Facebook -->
+            <button @click="pestaña = 'facebook'" :class="pestaña === 'facebook' ? 'bg-[#7A1C30] text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all font-medium text-sm">
+                <i class="fa-brands fa-facebook w-5 text-center text-lg"></i> Facebook
+            </button>
+
+            <!-- Botón TikTok -->
+            <button @click="pestaña = 'tiktok'" :class="pestaña === 'tiktok' ? 'bg-[#7A1C30] text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all font-medium text-sm">
+                <i class="fa-brands fa-tiktok w-5 text-center text-lg"></i> TikTok
+            </button>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-1 overflow-y-auto p-10">
+        
+        <header class="flex items-center justify-between mb-10">
+            <div class="bg-white rounded-full shadow-sm py-2 px-6 border border-gray-100">
+                <span class="text-sm font-bold text-gray-800" x-text="mes + ' ' + anio"></span>
+            </div>
+            <!-- Como es manual, quitamos el botón de editar -->
+            <div class="px-6 py-2 rounded-full border border-gray-200 text-sm font-bold text-gray-400 bg-gray-50 cursor-help" title="Los datos se editan directamente en el código">
+                Modo Lectura Activo
+            </div>
+        </header>
+
+        <!-- ========================================== -->
+        <!-- VISTA: GENERAL                             -->
+        <!-- ========================================== -->
+        <div x-show="pestaña === 'general'" x-cloak class="space-y-8 animate-[fadeIn_0.5s_ease-out]">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-900">Resumen Estadístico Global</h2>
+                <p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="tarjeta flex flex-col justify-between">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider"><i class="fa-solid fa-eye mr-2"></i> Impacto Total</p>
+                    <h3 class="text-5xl font-extrabold text-gray-800" x-text="totalImpresiones.toLocaleString()"></h3>
+                </div>
+                <div class="tarjeta flex flex-col justify-between">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider"><i class="fa-solid fa-users mr-2"></i> Crecimiento</p>
+                    <h3 class="text-5xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3>
+                </div>
+                <div class="bg-gray-900 text-white rounded-3xl p-8 shadow-lg flex flex-col justify-between">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider"><i class="fa-solid fa-bolt mr-2"></i> Interacción Promedio</p>
+                    <div class="flex items-end justify-between">
+                        <h3 class="text-5xl font-extrabold text-white"><span x-text="promedioInteraccion"></span><span class="text-2xl">%</span></h3>
+                        <span class="text-sm text-[#F4C430] font-bold">Global</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Distribución por red -->
+                <div class="tarjeta">
+                    <h3 class="text-sm font-bold text-gray-800 mb-8">Distribución de Impresiones por Red</h3>
+                    <div class="space-y-6">
+                        <!-- Instagram -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>Instagram</span><span class="text-gray-900" x-text="plataformas.instagram.impresiones.toLocaleString()"></span>
+                            </div>
+                            <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full rounded-full bg-[#7A1C30]" :style="`width: ${(plataformas.instagram.impresiones / totalImpresiones) * 100}%`"></div>
+                            </div>
+                        </div>
+                        <!-- Facebook -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>Facebook</span><span class="text-gray-900" x-text="plataformas.facebook.impresiones.toLocaleString()"></span>
+                            </div>
+                            <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full rounded-full bg-[#F4C430]" :style="`width: ${(plataformas.facebook.impresiones / totalImpresiones) * 100}%`"></div>
+                            </div>
+                        </div>
+                        <!-- TikTok -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>TikTok</span><span class="text-gray-900" x-text="plataformas.tiktok.impresiones.toLocaleString()"></span>
+                            </div>
+                            <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full rounded-full bg-gray-800" :style="`width: ${(plataformas.tiktok.impresiones / totalImpresiones) * 100}%`"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparativa Metas -->
+                <div class="tarjeta">
+                    <h3 class="text-sm font-bold text-gray-800 mb-8">Rendimiento (Tasa de Interacción vs Meta)</h3>
+                    <div class="flex h-48 items-end justify-around gap-6 pt-4 border-b border-gray-100 pb-2">
+                        <!-- Instagram -->
+                        <div class="flex flex-col items-center gap-2 h-full w-full relative">
+                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0" :style="`bottom: ${(plataformas.instagram.meta / 20) * 100}%`"></div>
+                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-white font-bold text-xs bg-[#7A1C30]" :style="`height: ${(plataformas.instagram.interaccion / 20) * 100}%`">
+                                <span x-text="plataformas.instagram.interaccion + '%'"></span>
+                            </div>
+                            <span class="text-[10px] font-bold text-gray-500 uppercase">Insta</span>
+                        </div>
+                        <!-- Facebook -->
+                        <div class="flex flex-col items-center gap-2 h-full w-full relative">
+                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0" :style="`bottom: ${(plataformas.facebook.meta / 20) * 100}%`"></div>
+                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-[#7A1C30] font-bold text-xs bg-[#F4C430]" :style="`height: ${(plataformas.facebook.interaccion / 20) * 100}%`">
+                                <span x-text="plataformas.facebook.interaccion + '%'"></span>
+                            </div>
+                            <span class="text-[10px] font-bold text-gray-500 uppercase">Face</span>
+                        </div>
+                        <!-- TikTok -->
+                        <div class="flex flex-col items-center gap-2 h-full w-full relative">
+                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0" :style="`bottom: ${(plataformas.tiktok.meta / 20) * 100}%`"></div>
+                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-white font-bold text-xs bg-gray-800" :style="`height: ${(plataformas.tiktok.interaccion / 20) * 100}%`">
+                                <span x-text="plataformas.tiktok.interaccion + '%'"></span>
+                            </div>
+                            <span class="text-[10px] font-bold text-gray-500 uppercase">TikTok</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VISTA: POR PLATAFORMA                      -->
+        <!-- ========================================== -->
+        <div x-show="pestaña !== 'general'" x-cloak class="space-y-8 animate-[fadeIn_0.5s_ease-out]">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Impresiones -->
+                <div class="tarjeta flex flex-col justify-between lg:col-span-1">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider">Impresiones</p>
+                    <h3 class="text-4xl font-extrabold text-gray-800" x-text="plataformas[pestaña].impresiones.toLocaleString()"></h3>
+                </div>
+                <!-- Seguidores -->
+                <div class="tarjeta flex flex-col justify-between lg:col-span-1">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider">Seguidores Nuevos</p>
+                    <h3 class="text-4xl font-extrabold text-gray-800" x-text="plataformas[pestaña].seguidoresNuevos.toLocaleString()"></h3>
+                </div>
+                <!-- Interacción -->
+                <div class="tarjeta flex flex-col justify-between lg:col-span-1">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider">Tasa Interacción</p>
+                    <h3 class="text-4xl font-extrabold text-gray-800"><span x-text="plataformas[pestaña].interaccion"></span>%</h3>
+                </div>
+                <!-- Meta -->
+                <div class="bg-gray-900 text-white rounded-3xl p-8 shadow-lg flex flex-col justify-between lg:col-span-1">
+                    <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider">Meta Interacción</p>
+                    <div class="flex items-end justify-between">
+                        <h3 class="text-4xl font-extrabold text-white"><span x-text="plataformas[pestaña].meta"></span>%</h3>
+                        <span class="text-sm text-[#F4C430] font-bold">Objetivo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Audiencia -->
+                <div class="tarjeta">
+                    <h3 class="text-sm font-bold text-gray-800 mb-8">Audiencia por Género</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>Hombres</span><span class="text-gray-900" x-text="plataformas[pestaña].hombres + '%'"></span>
+                            </div>
+                            <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-gray-800 rounded-full" :style="`width: ${plataformas[pestaña].hombres}%`"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>Mujeres</span><span class="text-gray-900" x-text="plataformas[pestaña].mujeres + '%'"></span>
+                            </div>
+                            <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-[#F4C430] rounded-full" :style="`width: ${plataformas[pestaña].mujeres}%`"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recomendación Activa -->
+                <div class="tarjeta border-l-4 border-l-[#7A1C30]">
+                    <h3 class="text-sm font-bold text-gray-800 mb-6">Recomendación Estratégica</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-6 rounded-2xl" x-text="plataformas[pestaña].recomendacion"></p>
+                </div>
+            </div>
+
+            <!-- FODA -->
+            <div class="tarjeta">
+                <h3 class="text-sm font-bold text-gray-800 mb-8">Análisis FODA</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <div class="flex flex-col gap-2">
+                        <h4 class="font-bold text-[10px] uppercase tracking-wider text-gray-400">Fortalezas</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-xl h-full" x-text="plataformas[pestaña].foda.fortalezas"></p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h4 class="font-bold text-[10px] uppercase tracking-wider text-gray-400">Oportunidades</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-xl h-full" x-text="plataformas[pestaña].foda.oportunidades"></p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h4 class="font-bold text-[10px] uppercase tracking-wider text-gray-400">Debilidades</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-xl h-full" x-text="plataformas[pestaña].foda.debilidades"></p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h4 class="font-bold text-[10px] uppercase tracking-wider text-gray-400">Amenazas</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-xl h-full" x-text="plataformas[pestaña].foda.amenazas"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ========================================================================================= -->
+    <!-- ZONA DE DATOS: EDITA ESTO MANUALMENTE CADA MES -->
+    <!-- ========================================================================================= -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('misDatosRedes', () => ({
+                // Controla qué pestaña está abierta
+                pestaña: 'general', 
+
+                // --- DATOS DEL MES ---
+                mes: 'Febrero',
+                anio: '2026',
+
+                plataformas: {
+                    facebook: {
+                        impresiones: 69163,
+                        seguidoresNuevos: 30,
+                        interaccion: 1.21,
+                        meta: 4.0,
+                        hombres: 73,
+                        mujeres: 27,
+                        recomendacion: "Enfoca el CTA en compartir las publicaciones. Comparte en grupos de FB.",
+                        foda: {
+                            fortalezas: "El algoritmo te beneficia por que se muestra en feeds nuevos, y la gente encuentra tus videos cuando busca temas especificos.",
+                            oportunidades: "Variedad de nichos, las búsquedas son muy variadas, el algoritmo puede confundirse de 'quien eres'.",
+                            debilidades: "Hacen falta sonidos en tendencia, 0.0% en sonido, 0.5% de tus vistas provienen de los seguidores.",
+                            amenazas: "Al tener tan poco tráfico de tus seguidores, si el algoritmo cambia hoy, podrían caer casi a 0 de un dia para otro."
+                        }
+                    },
+                    instagram: {
+                        impresiones: 35701,
+                        seguidoresNuevos: 110,
+                        interaccion: 4.33,
+                        meta: 3.0,
+                        hombres: 77,
+                        mujeres: 23,
+                        recomendacion: "Aprovecha el tráfico de búsqueda para crear parte 1 parte 2. Convierte reels en contenido específico. Usa vínculos de stories.",
+                        foda: {
+                            fortalezas: "Sabes retener a la audiencia diaria y atraer gente nueva.",
+                            oportunidades: "Hay mucha actividad en instagram eso hace que bajen las métricas, es necesario que mejore la interacción con la audiencia.",
+                            debilidades: "Falta un CTA más fuerte para le interacción con tus seguidores.",
+                            amenazas: "Si no tiene un buen alcance en los primeros segundos cae el alcance de instagram."
+                        }
+                    },
+                    tiktok: {
+                        impresiones: 1343,
+                        seguidoresNuevos: 142,
+                        interaccion: 17.65,
+                        meta: 2.0,
+                        hombres: 66,
+                        mujeres: 33,
+                        recomendacion: "Mejorar tu biografía para que sea un imán de follows. Usar audios de fondo. Sigue creando contenido específico de la Magdalena Contreras.",
+                        foda: {
+                            fortalezas: "Tienes capacidad de viralización el tráfico viene del feed principal, el algoritmo te recomienda con personas que no conoces.",
+                            oportunidades: "Si dejas de hablar de temas en tendencia tu contenido podría caer, también las personas que ven los videos se van sin enterarse quién eres.",
+                            debilidades: "Las visualizaciones cayeron, estas reteniendo mejor a la gente pero llegas a menos personas.",
+                            amenazas: "Dependencia del algoritmo, más gente debe verte en su feed de siguiendo."
+                        }
+                    }
+                },
+
+                // Lógica Matemática Automática (NO EDITAR)
+                get totalImpresiones() {
+                    return this.plataformas.facebook.impresiones + this.plataformas.instagram.impresiones + this.plataformas.tiktok.impresiones;
+                },
+                get totalSeguidores() {
+                    return this.plataformas.facebook.seguidoresNuevos + this.plataformas.instagram.seguidoresNuevos + this.plataformas.tiktok.seguidoresNuevos;
+                },
+                get promedioInteraccion() {
+                    return ((this.plataformas.facebook.interaccion + this.plataformas.instagram.interaccion + this.plataformas.tiktok.interaccion) / 3).toFixed(1);
+                }
+            }));
+        });
+    </script>
+</body>
+</html>
