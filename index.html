@@ -17,62 +17,124 @@
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('misDatosRedes', () => ({
-                // Controla qué pestaña está abierta
+                // Controla qué red social se ve
                 pestaña: 'general', 
+                // Controla qué mes se está visualizando por defecto
+                mesSeleccionado: 'febrero_2026',
 
-                // --- DATOS DEL MES ---
-                mes: 'Febrero',
-                anio: '2026',
-
-                plataformas: {
-                    facebook: {
-                        impresiones: 69163,
-                        seguidoresNuevos: 30,
-                        interaccion: 1.21,
-                        meta: 4.0,
-                        hombres: 73,
-                        mujeres: 27,
-                        recomendacion: "Enfoca el CTA en compartir las publicaciones. Comparte en grupos de FB.",
-                        foda: {
-                            fortalezas: "El algoritmo te beneficia por que se muestra en feeds nuevos, y la gente encuentra tus videos cuando busca temas especificos.",
-                            oportunidades: "Variedad de nichos, las búsquedas son muy variadas, el algoritmo puede confundirse de 'quien eres'.",
-                            debilidades: "Hacen falta sonidos en tendencia, 0.0% en sonido, 0.5% de tus vistas provienen de los seguidores.",
-                            amenazas: "Al tener tan poco tráfico de tus seguidores, si el algoritmo cambia hoy, podrían caer casi a 0 de un dia para otro."
+                // --- HISTÓRICO DE MESES ---
+                historico: {
+                    'enero_2026': {
+                        mes: 'Enero',
+                        anio: '2026',
+                        plataformas: {
+                            facebook: {
+                                impresiones: 81622,
+                                seguidoresNuevos: 26,
+                                interaccion: 2.50,
+                                meta: 4.0,
+                                hombres: 74,
+                                mujeres: 26,
+                                recomendacion: "Subir reels, pero mantener las fotografías de proyectos.",
+                                foda: {
+                                    fortalezas: "Es la red que más gente te ve, ideal para publicaciones rápidas.",
+                                    oportunidades: "La plataforma requiere formatos variados.",
+                                    debilidades: "Tienes baja interacción, un público más pasivo.",
+                                    amenazas: "Estancamiento de crecimiento de seguidores."
+                                }
+                            },
+                            instagram: {
+                                impresiones: 69256,
+                                seguidoresNuevos: 558,
+                                interaccion: 11.50,
+                                meta: 15.0,
+                                hombres: 62.1,
+                                mujeres: 37.9,
+                                recomendacion: "Uso de CTA, aprovechar horarios lunes a miércoles entre 6pm y 9pm.",
+                                foda: {
+                                    fortalezas: "Buen alcance, >50% de espectadores no son seguidores. El algoritmo te recomienda.",
+                                    oportunidades: "Cuidar el hook inicial para no perderse entre contenido político.",
+                                    debilidades: "Baja conversión de espectador a seguidor.",
+                                    amenazas: "Métricas caen bastante si publicas fuera de horarios pico."
+                                }
+                            },
+                            tiktok: {
+                                impresiones: 31000,
+                                seguidoresNuevos: 369,
+                                interaccion: 17.94,
+                                meta: 2.0,
+                                hombres: 74,
+                                mujeres: 26,
+                                recomendacion: "Mejorar hooks como el de 'Sabotaje', responder comentarios.",
+                                foda: {
+                                    fortalezas: "Muy buena retención, promedio de 36.7 segundos.",
+                                    oportunidades: "Restricciones de la plataforma con temas políticos pueden limitar alcance.",
+                                    debilidades: "Picos altos y bajos de visitas, falta estabilidad.",
+                                    amenazas: "Audiencia más alta en Hombres."
+                                }
+                            }
                         }
                     },
-                    instagram: {
-                        impresiones: 35701,
-                        seguidoresNuevos: 110,
-                        interaccion: 4.33,
-                        meta: 3.0,
-                        hombres: 77,
-                        mujeres: 23,
-                        recomendacion: "Aprovecha el tráfico de búsqueda para crear parte 1 parte 2. Convierte reels en contenido específico. Usa vínculos de stories.",
-                        foda: {
-                            fortalezas: "Sabes retener a la audiencia diaria y atraer gente nueva.",
-                            oportunidades: "Hay mucha actividad en instagram eso hace que bajen las métricas, es necesario que mejore la interacción con la audiencia.",
-                            debilidades: "Falta un CTA más fuerte para le interacción con tus seguidores.",
-                            amenazas: "Si no tiene un buen alcance en los primeros segundos cae el alcance de instagram."
-                        }
-                    },
-                    tiktok: {
-                        impresiones: 1343,
-                        seguidoresNuevos: 142,
-                        interaccion: 17.65,
-                        meta: 2.0,
-                        hombres: 66,
-                        mujeres: 33,
-                        recomendacion: "Mejorar tu biografía para que sea un imán de follows. Usar audios de fondo. Sigue creando contenido específico de la Magdalena Contreras.",
-                        foda: {
-                            fortalezas: "Tienes capacidad de viralización el tráfico viene del feed principal, el algoritmo te recomienda con personas que no conoces.",
-                            oportunidades: "Si dejas de hablar de temas en tendencia tu contenido podría caer, también las personas que ven los videos se van sin enterarse quién eres.",
-                            debilidades: "Las visualizaciones cayeron, estas reteniendo mejor a la gente pero llegas a menos personas.",
-                            amenazas: "Dependencia del algoritmo, más gente debe verte en su feed de siguiendo."
+                    'febrero_2026': {
+                        mes: 'Febrero',
+                        anio: '2026',
+                        plataformas: {
+                            facebook: {
+                                impresiones: 69163,
+                                seguidoresNuevos: 30,
+                                interaccion: 1.21,
+                                meta: 4.0,
+                                hombres: 73,
+                                mujeres: 27,
+                                recomendacion: "Enfoca el CTA en compartir las publicaciones. Comparte en grupos de FB.",
+                                foda: {
+                                    fortalezas: "El algoritmo te beneficia por que se muestra en feeds nuevos, y la gente encuentra tus videos cuando busca temas especificos.",
+                                    oportunidades: "Variedad de nichos, las búsquedas son muy variadas, el algoritmo puede confundirse de 'quien eres'.",
+                                    debilidades: "Hacen falta sonidos en tendencia, 0.0% en sonido, 0.5% de tus vistas provienen de los seguidores.",
+                                    amenazas: "Al tener tan poco tráfico de tus seguidores, si el algoritmo cambia hoy, podrían caer casi a 0 de un dia para otro."
+                                }
+                            },
+                            instagram: {
+                                impresiones: 35701,
+                                seguidoresNuevos: 110,
+                                interaccion: 4.33,
+                                meta: 3.0,
+                                hombres: 77,
+                                mujeres: 23,
+                                recomendacion: "Aprovecha el tráfico de búsqueda para crear parte 1 parte 2. Convierte reels en contenido específico. Usa vínculos de stories.",
+                                foda: {
+                                    fortalezas: "Sabes retener a la audiencia diaria y atraer gente nueva.",
+                                    oportunidades: "Hay mucha actividad en instagram eso hace que bajen las métricas, es necesario que mejore la interacción con la audiencia.",
+                                    debilidades: "Falta un CTA más fuerte para le interacción con tus seguidores.",
+                                    amenazas: "Si no tiene un buen alcance en los primeros segundos cae el alcance de instagram."
+                                }
+                            },
+                            tiktok: {
+                                impresiones: 1343,
+                                seguidoresNuevos: 142,
+                                interaccion: 17.65,
+                                meta: 2.0,
+                                hombres: 66,
+                                mujeres: 33,
+                                recomendacion: "Mejorar tu biografía para que sea un imán de follows. Usar audios de fondo. Sigue creando contenido específico de la Magdalena Contreras.",
+                                foda: {
+                                    fortalezas: "Tienes capacidad de viralización el tráfico viene del feed principal, el algoritmo te recomienda con personas que no conoces.",
+                                    oportunidades: "Si dejas de hablar de temas en tendencia tu contenido podría caer, también las personas que ven los videos se van sin enterarse quién eres.",
+                                    debilidades: "Las visualizaciones cayeron, estas reteniendo mejor a la gente pero llegas a menos personas.",
+                                    amenazas: "Dependencia del algoritmo, más gente debe verte en su feed de siguiendo."
+                                }
+                            }
                         }
                     }
                 },
 
-                // Lógica Matemática Automática (NO EDITAR)
+                // Lógica de Lectura Activa (NO EDITAR)
+                get datosMes() { return this.historico[this.mesSeleccionado]; },
+                get mes() { return this.datosMes.mes; },
+                get anio() { return this.datosMes.anio; },
+                get plataformas() { return this.datosMes.plataformas; },
+
+                // Matemáticas Generales
                 get totalImpresiones() {
                     return this.plataformas.facebook.impresiones + this.plataformas.instagram.impresiones + this.plataformas.tiktok.impresiones;
                 },
@@ -82,9 +144,17 @@
                 get promedioInteraccion() {
                     return ((this.plataformas.facebook.interaccion + this.plataformas.instagram.interaccion + this.plataformas.tiktok.interaccion) / 3).toFixed(1);
                 },
-                // Puente seguro para evitar errores en la vista individual cuando se está en "General"
                 get dataActiva() {
                     return this.pestaña === 'general' ? this.plataformas.instagram : this.plataformas[this.pestaña];
+                },
+                // Cálculo para asegurar que la gráfica nunca se desborde
+                get maxInteraccion() {
+                    return Math.max(
+                        this.plataformas.facebook.interaccion, this.plataformas.facebook.meta,
+                        this.plataformas.instagram.interaccion, this.plataformas.instagram.meta,
+                        this.plataformas.tiktok.interaccion, this.plataformas.tiktok.meta,
+                        10 // Escala mínima base del 10%
+                    );
                 }
             }));
         });
@@ -106,7 +176,6 @@
         }
     </style>
 </head>
-<!-- x-data conecta el diseño con los datos que están hasta abajo del código -->
 <body class="bg-[#f4f5f7] text-gray-800 font-sans min-h-screen flex" x-data="misDatosRedes">
 
     <!-- MENÚ LATERAL -->
@@ -145,22 +214,30 @@
     <main class="flex-1 overflow-y-auto p-10">
         
         <header class="flex items-center justify-between mb-10">
-            <div class="bg-white rounded-full shadow-sm py-2 px-6 border border-gray-100">
-                <span class="text-sm font-bold text-gray-800" x-text="mes + ' ' + anio"></span>
+            <!-- Selector de Meses -->
+            <div class="bg-white rounded-full shadow-sm py-1.5 px-1.5 border border-gray-100 flex items-center gap-1">
+                <template x-for="(datos, idMes) in historico" :key="idMes">
+                    <button 
+                        @click="mesSeleccionado = idMes" 
+                        :class="mesSeleccionado === idMes ? 'bg-gray-900 text-white shadow-md' : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'"
+                        class="px-6 py-2 text-sm font-bold rounded-full transition-all duration-300"
+                        x-text="datos.mes + ' ' + datos.anio">
+                    </button>
+                </template>
             </div>
-            <!-- Como es manual, quitamos el botón de editar -->
-            <div class="px-6 py-2 rounded-full border border-gray-200 text-sm font-bold text-gray-400 bg-gray-50 cursor-help" title="Los datos se editan directamente en el código">
-                Modo Lectura Activo
-            </div>
+            <!-- Espacio vacío (se eliminó el aviso de Modo Lectura) -->
+            <div></div>
         </header>
 
         <!-- ========================================== -->
         <!-- VISTA: GENERAL                             -->
         <!-- ========================================== -->
         <div x-show="pestaña === 'general'" x-cloak class="space-y-8 animate-[fadeIn_0.5s_ease-out]">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-gray-900">Resumen Estadístico Global</h2>
-                <p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p>
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Resumen Estadístico Global</h2>
+                    <p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -172,7 +249,7 @@
                     <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider"><i class="fa-solid fa-users mr-2"></i> Crecimiento</p>
                     <h3 class="text-5xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3>
                 </div>
-                <div class="bg-gray-900 text-white rounded-3xl p-8 shadow-lg flex flex-col justify-between">
+                <div class="bg-gray-900 text-white rounded-3xl p-8 shadow-lg flex flex-col justify-between transition-all duration-500">
                     <p class="text-xs font-bold text-gray-400 mb-6 uppercase tracking-wider"><i class="fa-solid fa-bolt mr-2"></i> Interacción Promedio</p>
                     <div class="flex items-end justify-between">
                         <h3 class="text-5xl font-extrabold text-white"><span x-text="promedioInteraccion"></span><span class="text-2xl">%</span></h3>
@@ -192,7 +269,7 @@
                                 <span>Instagram</span><span class="text-gray-900" x-text="plataformas.instagram.impresiones.toLocaleString()"></span>
                             </div>
                             <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full rounded-full bg-[#7A1C30]" :style="'width: ' + ((plataformas.instagram.impresiones / totalImpresiones) * 100) + '%'"></div>
+                                <div class="h-full rounded-full bg-[#7A1C30] transition-all duration-700 ease-out" :style="'width: ' + ((plataformas.instagram.impresiones / totalImpresiones) * 100) + '%'"></div>
                             </div>
                         </div>
                         <!-- Facebook -->
@@ -201,7 +278,7 @@
                                 <span>Facebook</span><span class="text-gray-900" x-text="plataformas.facebook.impresiones.toLocaleString()"></span>
                             </div>
                             <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full rounded-full bg-[#F4C430]" :style="'width: ' + ((plataformas.facebook.impresiones / totalImpresiones) * 100) + '%'"></div>
+                                <div class="h-full rounded-full bg-[#F4C430] transition-all duration-700 ease-out" :style="'width: ' + ((plataformas.facebook.impresiones / totalImpresiones) * 100) + '%'"></div>
                             </div>
                         </div>
                         <!-- TikTok -->
@@ -210,36 +287,51 @@
                                 <span>TikTok</span><span class="text-gray-900" x-text="plataformas.tiktok.impresiones.toLocaleString()"></span>
                             </div>
                             <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full rounded-full bg-gray-800" :style="'width: ' + ((plataformas.tiktok.impresiones / totalImpresiones) * 100) + '%'"></div>
+                                <div class="h-full rounded-full bg-gray-800 transition-all duration-700 ease-out" :style="'width: ' + ((plataformas.tiktok.impresiones / totalImpresiones) * 100) + '%'"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Comparativa Metas -->
+                <!-- Comparativa Metas (Corregida con maxInteraccion) -->
                 <div class="tarjeta">
                     <h3 class="text-sm font-bold text-gray-800 mb-8">Rendimiento (Tasa de Interacción vs Meta)</h3>
-                    <div class="flex h-48 items-end justify-around gap-6 pt-4 border-b border-gray-100 pb-2">
+                    <div class="flex h-48 items-end justify-around gap-6 pt-4 border-b border-gray-100 pb-2 relative overflow-hidden">
+                        
                         <!-- Instagram -->
-                        <div class="flex flex-col items-center gap-2 h-full w-full relative">
-                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0" :style="'bottom: ' + ((plataformas.instagram.meta / 20) * 100) + '%'"></div>
-                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-white font-bold text-xs bg-[#7A1C30]" :style="'height: ' + ((plataformas.instagram.interaccion / 20) * 100) + '%'">
+                        <div class="flex flex-col items-center gap-2 h-full w-full relative group">
+                            <!-- Línea de Meta -->
+                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0 transition-all duration-700 ease-out" :style="'bottom: ' + ((plataformas.instagram.meta / maxInteraccion) * 100) + '%'"></div>
+                            <!-- Etiqueta Hover Meta -->
+                            <span class="absolute text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity bg-white px-1 -translate-y-4 z-20" :style="'bottom: ' + ((plataformas.instagram.meta / maxInteraccion) * 100) + '%'" x-text="'Meta ' + plataformas.instagram.meta + '%'"></span>
+                            
+                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-white font-bold text-xs bg-[#7A1C30] transition-all duration-700 ease-out shadow-lg" :style="'height: ' + ((plataformas.instagram.interaccion / maxInteraccion) * 100) + '%'">
                                 <span x-text="plataformas.instagram.interaccion + '%'"></span>
                             </div>
                             <span class="text-[10px] font-bold text-gray-500 uppercase">Insta</span>
                         </div>
+                        
                         <!-- Facebook -->
-                        <div class="flex flex-col items-center gap-2 h-full w-full relative">
-                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0" :style="'bottom: ' + ((plataformas.facebook.meta / 20) * 100) + '%'"></div>
-                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-[#7A1C30] font-bold text-xs bg-[#F4C430]" :style="'height: ' + ((plataformas.facebook.interaccion / 20) * 100) + '%'">
+                        <div class="flex flex-col items-center gap-2 h-full w-full relative group">
+                            <!-- Línea de Meta -->
+                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0 transition-all duration-700 ease-out" :style="'bottom: ' + ((plataformas.facebook.meta / maxInteraccion) * 100) + '%'"></div>
+                            <!-- Etiqueta Hover Meta -->
+                            <span class="absolute text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity bg-white px-1 -translate-y-4 z-20" :style="'bottom: ' + ((plataformas.facebook.meta / maxInteraccion) * 100) + '%'" x-text="'Meta ' + plataformas.facebook.meta + '%'"></span>
+
+                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-[#7A1C30] font-bold text-xs bg-[#F4C430] transition-all duration-700 ease-out shadow-lg" :style="'height: ' + ((plataformas.facebook.interaccion / maxInteraccion) * 100) + '%'">
                                 <span x-text="plataformas.facebook.interaccion + '%'"></span>
                             </div>
                             <span class="text-[10px] font-bold text-gray-500 uppercase">Face</span>
                         </div>
+                        
                         <!-- TikTok -->
-                        <div class="flex flex-col items-center gap-2 h-full w-full relative">
-                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0" :style="'bottom: ' + ((plataformas.tiktok.meta / 20) * 100) + '%'"></div>
-                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-white font-bold text-xs bg-gray-800" :style="'height: ' + ((plataformas.tiktok.interaccion / 20) * 100) + '%'">
+                        <div class="flex flex-col items-center gap-2 h-full w-full relative group">
+                            <!-- Línea de Meta -->
+                            <div class="absolute w-full border-t-2 border-dashed border-gray-300 z-0 transition-all duration-700 ease-out" :style="'bottom: ' + ((plataformas.tiktok.meta / maxInteraccion) * 100) + '%'"></div>
+                            <!-- Etiqueta Hover Meta -->
+                            <span class="absolute text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity bg-white px-1 -translate-y-4 z-20" :style="'bottom: ' + ((plataformas.tiktok.meta / maxInteraccion) * 100) + '%'" x-text="'Meta ' + plataformas.tiktok.meta + '%'"></span>
+
+                            <div class="w-full max-w-[3rem] rounded-t-xl z-10 flex items-end justify-center pb-2 text-white font-bold text-xs bg-gray-800 transition-all duration-700 ease-out shadow-lg" :style="'height: ' + ((plataformas.tiktok.interaccion / maxInteraccion) * 100) + '%'">
                                 <span x-text="plataformas.tiktok.interaccion + '%'"></span>
                             </div>
                             <span class="text-[10px] font-bold text-gray-500 uppercase">TikTok</span>
@@ -290,7 +382,7 @@
                                 <span>Hombres</span><span class="text-gray-900" x-text="dataActiva.hombres + '%'"></span>
                             </div>
                             <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-gray-800 rounded-full" :style="'width: ' + dataActiva.hombres + '%'"></div>
+                                <div class="h-full bg-gray-800 rounded-full transition-all duration-700 ease-out" :style="'width: ' + dataActiva.hombres + '%'"></div>
                             </div>
                         </div>
                         <div>
@@ -298,16 +390,16 @@
                                 <span>Mujeres</span><span class="text-gray-900" x-text="dataActiva.mujeres + '%'"></span>
                             </div>
                             <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-[#F4C430] rounded-full" :style="'width: ' + dataActiva.mujeres + '%'"></div>
+                                <div class="h-full bg-[#F4C430] rounded-full transition-all duration-700 ease-out" :style="'width: ' + dataActiva.mujeres + '%'"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Recomendación Activa -->
-                <div class="tarjeta border-l-4 border-l-[#7A1C30]">
+                <div class="tarjeta border-l-4 border-l-[#7A1C30] flex flex-col">
                     <h3 class="text-sm font-bold text-gray-800 mb-6">Recomendación Estratégica</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-6 rounded-2xl" x-text="dataActiva.recomendacion"></p>
+                    <p class="text-sm text-gray-600 leading-relaxed bg-gray-50 p-6 rounded-2xl flex-1" x-text="dataActiva.recomendacion"></p>
                 </div>
             </div>
 
