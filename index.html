@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasboard - Ximena Molina</title>
+    <title>Campaña OS - Ximena Molina</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -33,13 +33,12 @@
     </style>
 
     <!-- ================================================================= -->
-    <!-- BASE DE DATOS TERRITORIAL (42 COLONIAS OFICIALES) -->
+    <!-- BASE DE DATOS TERRITORIAL -->
     <!-- ================================================================= -->
     <script>
-        // Función auxiliar para simular datos en las colonias nuevas faltantes
         const generarSimulacion = (seccionesArray) => {
             const numSecciones = seccionesArray.length;
-            const ln = numSecciones * 1500; // aprox 1500 por sección
+            const ln = numSecciones * 1500; 
             return {
                 detallesSecciones: seccionesArray.map(s => ({ sec: s, nominal: Math.floor(Math.random() * 1000) + 1000 })),
                 listaNominal: ln, mujeres: Math.floor(ln * 0.53), hombres: Math.floor(ln * 0.47), jovenes: Math.floor(ln * 0.25),
@@ -171,7 +170,7 @@
     <aside class="w-72 bg-white flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.02)] z-20 shrink-0 border-r border-gray-100">
         
         <div class="p-6 border-b border-gray-100 bg-gray-50/50">
-            <h1 class="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">Dashboard</h1>
+            <h1 class="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">Campaña OS</h1>
             <p class="text-xs font-bold text-brand-maroon tracking-wider uppercase">Ximena Molina</p>
         </div>
 
@@ -188,7 +187,6 @@
 
         <div class="flex-1 overflow-y-auto no-scrollbar py-4">
             
-            <!-- TERRITORIO SUBMENU -->
             <div x-show="moduloActivo === 'territorio'" x-transition.opacity.duration.300ms class="px-4 space-y-6">
                 <div>
                     <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Unidades Territoriales (42)</h2>
@@ -202,7 +200,6 @@
                 </div>
             </div>
 
-            <!-- REDES SUBMENU -->
             <div x-show="moduloActivo === 'redes'" x-cloak x-transition.opacity.duration.300ms class="px-4 space-y-6">
                 <div>
                     <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Métricas de Plataforma</p>
@@ -327,7 +324,7 @@
             </header>
 
             <div x-show="pestañaRedes === 'general'" x-transition class="space-y-8">
-                <div><h2 class="text-2xl font-extrabold text-gray-900">Métricas Generales</h2><p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p></div>
+                <div><h2 class="text-2xl font-extrabold text-gray-900">Métricas Globales Digitales</h2><p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-eye mr-1"></i> Impacto Total</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalImpresiones.toLocaleString()"></h3></div>
                     <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-users mr-1"></i> Crecimiento Global</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3></div>
@@ -374,7 +371,7 @@
             </div>
 
             <div x-show="pestañaRedes === 'metas'" x-cloak x-transition class="space-y-6">
-                 <div><h2 class="text-2xl font-extrabold text-gray-900">Estrategias</h2><p class="text-sm text-gray-500 mt-1">Recomendaciones</p></div>
+                 <div><h2 class="text-2xl font-extrabold text-gray-900">Directrices Estratégicas</h2><p class="text-sm text-gray-500 mt-1">Recomendaciones de campaña.</p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-[#C13584]">
                         <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-instagram"></i> Instagram</h3>
@@ -397,6 +394,10 @@
         </div>
     </main>
 
+    <!-- ================================================================= -->
+    <!-- MODALES -->
+    <!-- ================================================================= -->
+    
     <!-- Modal Próximamente -->
     <div id="modalConstruccion" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-center transform scale-95 transition-transform duration-300">
@@ -404,6 +405,32 @@
             <h3 class="text-xl font-bold text-gray-900 mb-2">Módulo Próximamente</h3>
             <p class="text-gray-500 mb-6 text-sm">Disponible al inicio de recorridos.</p>
             <button onclick="cerrarModalConstruccion()" class="w-full py-2.5 bg-brand-dark text-white rounded-xl font-bold hover:bg-gray-800">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal Mapas -->
+    <div id="modalMapa" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <i class="fa-solid fa-map text-brand-blue"></i> Mapa Cartográfico: Sección <span id="tituloMapaModal" class="text-brand-maroon"></span>
+                </h3>
+                <button onclick="cerrarModalMapa()" class="text-gray-400 hover:text-gray-800 transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 bg-gray-200 relative flex items-center justify-center overflow-hidden" id="contenedorMapaPdf">
+                <!-- Fallback visual si no se encuentra el PDF -->
+                <div class="text-center p-8 bg-white/80 rounded-xl shadow-sm border border-gray-100 max-w-md m-4">
+                    <i class="fa-regular fa-file-pdf text-6xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-800 font-bold text-lg">Buscando mapa de la sección...</p>
+                    <p class="text-sm text-gray-500 mt-2">Asegúrate de guardar tus mapas en una carpeta llamada <strong>mapas</strong> junto a este archivo.</p>
+                    <div class="bg-gray-100 rounded text-xs font-mono p-2 mt-4 text-left break-all text-gray-500">
+                        Ruta esperada: <br><span id="rutaMapaSugerida" class="text-brand-blue font-bold"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -457,8 +484,13 @@
             data.detallesSecciones.forEach(sec => {
                 const pct = ((sec.nominal / data.listaNominal) * 100).toFixed(1);
                 cGrid.innerHTML += `
-                    <div class="bg-white rounded-xl p-3 border border-gray-100 shadow-sm flex flex-col justify-between">
-                        <div><div class="text-[9px] font-bold text-gray-400 mb-0.5">SECCIÓN</div><div class="text-xl font-black text-brand-dark">${sec.sec}</div></div>
+                    <div class="bg-white rounded-xl p-3 border border-gray-100 shadow-sm flex flex-col justify-between group hover:border-brand-blue hover:shadow-md transition-all">
+                        <div class="flex justify-between items-start">
+                            <div><div class="text-[9px] font-bold text-gray-400 mb-0.5">SECCIÓN</div><div class="text-xl font-black text-brand-dark">${sec.sec}</div></div>
+                            <button onclick="abrirModalMapa('${sec.sec}')" class="text-gray-300 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors cursor-pointer" title="Ver Mapa de la Sección">
+                                <i class="fa-solid fa-map-location-dot text-lg"></i>
+                            </button>
+                        </div>
                         <div class="mt-2">
                             <div class="flex justify-between items-end mb-1"><span class="text-[10px] text-gray-500">Nominal</span><span class="text-xs font-bold">${formatNum(sec.nominal)}</span></div>
                             <div class="h-1 bg-gray-100 rounded-full"><div class="h-full bg-brand-maroon rounded-full" style="width: ${pct}%"></div></div>
@@ -491,14 +523,12 @@
             initCharts();
             const menu = document.getElementById('coloniaMenu');
             
-            // Ordenar alfabéticamente para que sea más fácil buscar en el menú
             const colonias = Object.keys(db).sort();
             
             colonias.forEach(colonia => {
                 const a = document.createElement('a'); a.href = "#"; a.dataset.colonia = colonia;
                 a.className = `nav-item-terr flex items-center gap-3 px-4 py-2 text-[13px] font-medium rounded-xl transition-all cursor-pointer text-gray-500 hover:bg-gray-50`;
                 
-                // Formatear nombre a capitalizado (Ejemplo: "LA CARBONERA" -> "La Carbonera")
                 const nombreLimpio = colonia.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
                 const nombreCorto = nombreLimpio.substring(0, 26) + (nombreLimpio.length > 26 ? '...' : '');
 
@@ -507,11 +537,58 @@
                 menu.appendChild(a);
             });
             
-            if(colonias.length > 0) loadColoniaData("EL GAVILLERO"); // Cargar Gavillero por defecto para ver los datos que subimos primero
+            if(colonias.length > 0) loadColoniaData("EL GAVILLERO"); 
         });
 
+        // Funciones de Modales
         function abrirModalConstruccion() { const m = document.getElementById('modalConstruccion'); const c = m.querySelector('div'); m.classList.remove('hidden'); setTimeout(() => { m.classList.remove('opacity-0'); c.classList.remove('scale-95'); c.classList.add('scale-100'); }, 10); }
         function cerrarModalConstruccion() { const m = document.getElementById('modalConstruccion'); const c = m.querySelector('div'); m.classList.add('opacity-0'); c.classList.remove('scale-100'); c.classList.add('scale-95'); setTimeout(() => m.classList.add('hidden'), 300); }
+        
+        function abrirModalMapa(seccion) { 
+            const m = document.getElementById('modalMapa'); 
+            const c = m.querySelector('div'); 
+            
+            // Actualizar Textos
+            document.getElementById('tituloMapaModal').textContent = seccion;
+            document.getElementById('rutaMapaSugerida').textContent = `mapas/${seccion}.pdf`;
+            
+            // Intentar cargar el PDF real en el contenedor
+            // El fallback visual se ocultará si el PDF carga correctamente gracias al z-index y el fondo del iframe
+            const contenedor = document.getElementById('contenedorMapaPdf');
+            
+            // Si ya hay un iframe anterior, removerlo
+            const iframeAnterior = contenedor.querySelector('iframe');
+            if (iframeAnterior) iframeAnterior.remove();
+
+            // Insertar el nuevo iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `mapas/${seccion}.pdf`;
+            iframe.className = 'absolute inset-0 w-full h-full z-20 bg-white';
+            iframe.frameBorder = '0';
+            
+            // Un pequeño truco para evitar mostrar un iframe en blanco si el archivo no existe localmente
+            // Al cargarse el archivo, se sobrepondrá al texto de "Buscando mapa..."
+            contenedor.appendChild(iframe);
+
+            m.classList.remove('hidden'); 
+            setTimeout(() => { m.classList.remove('opacity-0'); c.classList.remove('scale-95'); c.classList.add('scale-100'); }, 10); 
+        }
+
+        function cerrarModalMapa() { 
+            const m = document.getElementById('modalMapa'); 
+            const c = m.querySelector('div'); 
+            m.classList.add('opacity-0'); 
+            c.classList.remove('scale-100'); 
+            c.classList.add('scale-95'); 
+            
+            setTimeout(() => {
+                m.classList.add('hidden');
+                // Limpiar el iframe para que no siga cargando de fondo
+                const iframeAnterior = document.getElementById('contenedorMapaPdf').querySelector('iframe');
+                if (iframeAnterior) iframeAnterior.remove();
+            }, 300); 
+        }
+
     </script>
 </body>
 </html>
