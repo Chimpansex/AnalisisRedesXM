@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Ximena Molina</title>
+    <title>Campaña OS - Ximena Molina</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Configuración de Colores Tailwind -->
+    <!-- Configuración de Colores Institucionales -->
     <script>
         tailwind.config = {
             theme: {
@@ -42,42 +42,716 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .custom-shadow { box-shadow: 0 15px 40px -15px rgba(0,0,0,0.05); }
         .nav-item-terr.active { background-color: #791E30; color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        .nav-item-terr.active svg { color: white; }
+        .nav-item-terr.active svg, .nav-item-terr.active i { color: white; }
     </style>
 
     <!-- ================================================================= -->
-    <!-- BASE DE DATOS TERRITORIAL (CSV Procesado) -->
+    <!-- BASE DE DATOS TERRITORIAL (Extraída de db_maco (1).js) -->
     <!-- ================================================================= -->
     <script>
-        const dbTerritorio = {
-            "El Gavillero": {
+        const db = {
+            "AMPLIACION LOMAS DE SAN BERNABE": {
                 detallesSecciones: [
+                    { sec: "3040", nominal: 2311 },
+                    { sec: "3041", nominal: 1304 },
+                    { sec: "3070", nominal: 1318 },
+                    { sec: "3071", nominal: 2059 },
+                ],
+                listaNominal: 6992,
+                mujeres: 3668,
+                hombres: 3324,
+                jovenes: 1670,
+                edadesMujeres: [36, 62, 345, 373, 341, 332, 362, 355, 364, 263, 238, 597],
+                edadesHombres: [62, 76, 334, 382, 338, 342, 298, 319, 289, 215, 211, 458],
+                votos2015: { morena: 721, pan: 180, pri: 592 },
+                votos2018: { morena: 2494, pan: 579, pri: 768 },
+                votos2021: { morena: 1432, pan: 438, pri: 915 },
+                votos2024: { morena: 3500, pan: 500, pri: 800 },
+                encuesta: { morena: 55, pan: 15, pri: 12, indecisos: 18 }
+            },
+            "AMPLIACION POTRERILLO": {
+                detallesSecciones: [
+                    { sec: "3068", nominal: 1319 },
+                    { sec: "3074", nominal: 2004 },
+                ],
+                listaNominal: 3323,
+                mujeres: 1774,
+                hombres: 1549,
+                jovenes: 739,
+                edadesMujeres: [22, 28, 172, 179, 151, 161, 149, 145, 137, 127, 98, 405],
+                edadesHombres: [27, 36, 176, 150, 163, 141, 147, 121, 116, 92, 101, 279],
+                votos2015: { morena: 388, pan: 91, pri: 282 },
+                votos2018: { morena: 1113, pan: 251, pri: 379 },
+                votos2021: { morena: 673, pan: 226, pri: 418 },
+                votos2024: { morena: 1724, pan: 236, pri: 345 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "ATACAXCO": {
+                detallesSecciones: [
+                    { sec: "3036", nominal: 1319 },
+                    { sec: "3037", nominal: 2169 },
+                    { sec: "3020", nominal: 1433 },
+                ],
+                listaNominal: 4921,
+                mujeres: 2631,
+                hombres: 2290,
+                jovenes: 1083,
+                edadesMujeres: [21, 41, 237, 240, 243, 222, 238, 236, 231, 203, 174, 545],
+                edadesHombres: [37, 43, 246, 219, 216, 219, 199, 185, 175, 149, 153, 449],
+                votos2015: { morena: 601, pan: 168, pri: 367 },
+                votos2018: { morena: 1714, pan: 419, pri: 502 },
+                votos2021: { morena: 1042, pan: 351, pri: 618 },
+                votos2024: { morena: 2554, pan: 379, pri: 479 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "BARROS SIERRA": {
+                detallesSecciones: [
+                    { sec: "3035", nominal: 1802 },
+                    { sec: "3034", nominal: 1073 },
+                    { sec: "3023", nominal: 1221 },
+                    { sec: "3020", nominal: 1433 },
+                ],
+                listaNominal: 5529,
+                mujeres: 2983,
+                hombres: 2546,
+                jovenes: 1269,
+                edadesMujeres: [34, 47, 269, 283, 260, 244, 259, 238, 267, 228, 201, 653],
+                edadesHombres: [44, 47, 289, 260, 243, 233, 234, 206, 193, 169, 168, 460],
+                votos2015: { morena: 669, pan: 235, pri: 433 },
+                votos2018: { morena: 1916, pan: 493, pri: 596 },
+                votos2021: { morena: 1111, pan: 395, pri: 730 },
+                votos2024: { morena: 2850, pan: 418, pri: 569 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "CAZULCO": {
+                detallesSecciones: [
+                    { sec: "3090", nominal: 1928 },
+                ],
+                listaNominal: 1928,
+                mujeres: 1045,
+                hombres: 883,
+                jovenes: 421,
+                edadesMujeres: [7, 16, 91, 100, 96, 97, 86, 76, 77, 81, 75, 243],
+                edadesHombres: [21, 23, 85, 78, 86, 75, 74, 75, 68, 62, 59, 177],
+                votos2015: { morena: 226, pan: 53, pri: 153 },
+                votos2018: { morena: 638, pan: 189, pri: 219 },
+                votos2021: { morena: 419, pan: 116, pri: 212 },
+                votos2024: { morena: 1011, pan: 135, pri: 174 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "CUAHUTEMOC": {
+                detallesSecciones: [
+                    { sec: "3025", nominal: 1459 },
+                    { sec: "3024", nominal: 1741 },
+                    { sec: "3011", nominal: 2244 },
+                    { sec: "3108", nominal: 667 },
+                    { sec: "3012", nominal: 2362 },
+                ],
+                listaNominal: 8473,
+                mujeres: 4496,
+                hombres: 3977,
+                jovenes: 1735,
+                edadesMujeres: [43, 63, 396, 401, 381, 417, 439, 393, 390, 319, 321, 933],
+                edadesHombres: [41, 62, 386, 343, 342, 382, 350, 319, 328, 252, 280, 892],
+                votos2015: { morena: 886, pan: 520, pri: 615 },
+                votos2018: { morena: 2793, pan: 1164, pri: 829 },
+                votos2021: { morena: 1618, pan: 1163, pri: 1109 },
+                votos2024: { morena: 4059, pan: 1097, pri: 878 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "EL ERMITAÑO": {
+                detallesSecciones: [
+                    { sec: "3089", nominal: 1762 },
+                    { sec: "3118", nominal: 3496 },
+                ],
+                listaNominal: 5258,
+                mujeres: 2795,
+                hombres: 2463,
+                jovenes: 1391,
+                edadesMujeres: [30, 77, 340, 276, 298, 308, 252, 269, 232, 218, 172, 323],
+                edadesHombres: [31, 57, 311, 270, 271, 319, 226, 222, 195, 175, 143, 243],
+                votos2015: { morena: 395, pan: 91, pri: 326 },
+                votos2018: { morena: 1690, pan: 298, pri: 554 },
+                votos2021: { morena: 1018, pan: 201, pri: 540 },
+                votos2024: { morena: 2154, pan: 351, pri: 418 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "EL GAVILLERO": {
+                detallesSecciones: [
+                    { sec: "3098", nominal: 1388 },
                     { sec: "3095", nominal: 3083 },
-                    { sec: "3098", nominal: 1388 }
                 ],
                 listaNominal: 4471,
-                mujeres: 2399, hombres: 2072, jovenes: 1290,
+                mujeres: 2399,
+                hombres: 2072,
+                jovenes: 1032,
                 edadesMujeres: [21, 44, 299, 278, 292, 232, 243, 221, 234, 163, 140, 232],
                 edadesHombres: [34, 55, 292, 267, 248, 232, 194, 170, 163, 130, 112, 175],
                 votos2015: { morena: 123, pan: 117, pri: 326 },
                 votos2018: { morena: 1098, pan: 114, pri: 437 },
                 votos2021: { morena: 969, pan: 118, pri: 422 },
                 votos2024: { morena: 1942, pan: 183, pri: 343 },
-                encuesta: { morena: 54.2, pan: 15.3, pri: 12.0, indecisos: 18.5 }
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
             },
-            "Atacaxco": {
+            "EL OCOTAL": {
                 detallesSecciones: [
-                    { sec: "3020", nominal: 1500 }, { sec: "3036", nominal: 1800 }, { sec: "3037", nominal: 1910 }
+                    { sec: "3088", nominal: 1475 },
+                    { sec: "3074", nominal: 2004 },
+                    { sec: "3087", nominal: 1899 },
+                    { sec: "3097", nominal: 2177 },
                 ],
-                listaNominal: 5210,
-                mujeres: 2810, hombres: 2400, jovenes: 1150,
-                edadesMujeres: [30, 50, 300, 300, 310, 250, 260, 240, 250, 200, 180, 440],
-                edadesHombres: [40, 60, 280, 290, 280, 240, 210, 190, 180, 150, 130, 350],
-                votos2015: { morena: 140, pan: 180, pri: 350 },
-                votos2018: { morena: 1300, pan: 160, pri: 410 },
-                votos2021: { morena: 1210, pan: 190, pri: 430 },
-                votos2024: { morena: 2350, pan: 220, pri: 380 },
-                encuesta: { morena: 52.0, pan: 16.0, pri: 14.0, indecisos: 18.0 }
+                listaNominal: 7555,
+                mujeres: 3971,
+                hombres: 3584,
+                jovenes: 1774,
+                edadesMujeres: [44, 76, 396, 389, 360, 367, 345, 307, 287, 252, 246, 902],
+                edadesHombres: [59, 70, 396, 344, 344, 321, 291, 292, 259, 228, 203, 577],
+                votos2015: { morena: 852, pan: 193, pri: 618 },
+                votos2018: { morena: 2577, pan: 536, pri: 792 },
+                votos2021: { morena: 1461, pan: 397, pri: 824 },
+                votos2024: { morena: 3878, pan: 512, pri: 752 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "EL ROSAL": {
+                detallesSecciones: [
+                    { sec: "3105", nominal: 1462 },
+                    { sec: "3067", nominal: 2603 },
+                    { sec: "3065", nominal: 2011 },
+                    { sec: "3064", nominal: 2364 },
+                    { sec: "3066", nominal: 2843 },
+                ],
+                listaNominal: 11283,
+                mujeres: 5972,
+                hombres: 5311,
+                jovenes: 2470,
+                edadesMujeres: [59, 83, 584, 572, 532, 532, 535, 497, 497, 451, 401, 1229],
+                edadesHombres: [64, 88, 594, 486, 477, 472, 452, 381, 417, 345, 335, 1200],
+                votos2015: { morena: 1047, pan: 350, pri: 648 },
+                votos2018: { morena: 3666, pan: 766, pri: 887 },
+                votos2021: { morena: 2162, pan: 620, pri: 1097 },
+                votos2024: { morena: 5621, pan: 706, pri: 928 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "EL TANQUE": {
+                detallesSecciones: [
+                    { sec: "3117", nominal: 686 },
+                    { sec: "3014", nominal: 1443 },
+                    { sec: "2992", nominal: 1018 },
+                    { sec: "2991", nominal: 1184 },
+                    { sec: "2990", nominal: 771 },
+                    { sec: "2989", nominal: 1729 },
+                    { sec: "2993", nominal: 1308 },
+                    { sec: "2994", nominal: 1475 },
+                ],
+                listaNominal: 9614,
+                mujeres: 5127,
+                hombres: 4487,
+                jovenes: 1968,
+                edadesMujeres: [42, 70, 480, 439, 442, 452, 467, 421, 454, 383, 333, 1144],
+                edadesHombres: [41, 62, 471, 363, 382, 396, 396, 350, 365, 307, 326, 1028],
+                votos2015: { morena: 924, pan: 494, pri: 618 },
+                votos2018: { morena: 3122, pan: 1220, pri: 928 },
+                votos2021: { morena: 1818, pan: 1147, pri: 1182 },
+                votos2024: { morena: 4578, pan: 1306, pri: 978 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "EL TORO": {
+                detallesSecciones: [
+                    { sec: "3046", nominal: 1332 },
+                    { sec: "3064", nominal: 2364 },
+                    { sec: "3047", nominal: 1083 },
+                    { sec: "3045", nominal: 1612 },
+                ],
+                listaNominal: 6391,
+                mujeres: 3371,
+                hombres: 3020,
+                jovenes: 1344,
+                edadesMujeres: [29, 39, 307, 316, 281, 303, 321, 280, 308, 258, 222, 707],
+                edadesHombres: [27, 43, 319, 291, 271, 269, 259, 235, 232, 185, 204, 685],
+                votos2015: { morena: 597, pan: 208, pri: 379 },
+                votos2018: { morena: 2018, pan: 472, pri: 504 },
+                votos2021: { morena: 1152, pan: 355, pri: 596 },
+                votos2024: { morena: 3129, pan: 421, pri: 565 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "HEROES DE PADIERNA": {
+                detallesSecciones: [
+                    { sec: "3031", nominal: 2471 },
+                    { sec: "3055", nominal: 1845 },
+                    { sec: "3054", nominal: 2045 },
+                    { sec: "3053", nominal: 2197 },
+                    { sec: "3032", nominal: 1530 },
+                ],
+                listaNominal: 10088,
+                mujeres: 5367,
+                hombres: 4721,
+                jovenes: 2019,
+                edadesMujeres: [39, 61, 467, 477, 467, 455, 458, 442, 458, 411, 351, 1281],
+                edadesHombres: [41, 64, 468, 401, 381, 403, 377, 349, 370, 312, 332, 1223],
+                votos2015: { morena: 1109, pan: 474, pri: 588 },
+                votos2018: { morena: 3410, pan: 1032, pri: 822 },
+                votos2021: { morena: 1968, pan: 978, pri: 1047 },
+                votos2024: { morena: 4897, pan: 1044, pri: 820 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "HUAYATLA": {
+                detallesSecciones: [
+                    { sec: "3106", nominal: 1225 },
+                    { sec: "3073", nominal: 1222 },
+                    { sec: "3069", nominal: 1533 },
+                ],
+                listaNominal: 3980,
+                mujeres: 2125,
+                hombres: 1855,
+                jovenes: 850,
+                edadesMujeres: [22, 28, 192, 193, 179, 178, 206, 142, 169, 137, 138, 541],
+                edadesHombres: [27, 30, 185, 170, 151, 163, 163, 151, 152, 107, 107, 449],
+                votos2015: { morena: 343, pan: 84, pri: 217 },
+                votos2018: { morena: 1259, pan: 190, pri: 322 },
+                votos2021: { morena: 710, pan: 158, pri: 348 },
+                votos2024: { morena: 1957, pan: 172, pri: 279 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "IXTLAHUALTONGO": {
+                detallesSecciones: [
+                    { sec: "3098", nominal: 1388 },
+                ],
+                listaNominal: 1388,
+                mujeres: 745,
+                hombres: 643,
+                jovenes: 326,
+                edadesMujeres: [4, 11, 87, 82, 80, 81, 80, 66, 71, 55, 39, 89],
+                edadesHombres: [10, 17, 89, 88, 66, 78, 65, 52, 45, 33, 36, 64],
+                votos2015: { morena: 102, pan: 9, pri: 135 },
+                votos2018: { morena: 419, pan: 31, pri: 137 },
+                votos2021: { morena: 310, pan: 43, pri: 113 },
+                votos2024: { morena: 635, pan: 47, pri: 136 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LA CARBONERA": {
+                detallesSecciones: [
+                    { sec: "3097", nominal: 2177 },
+                    { sec: "3087", nominal: 1899 },
+                    { sec: "3086", nominal: 1475 },
+                ],
+                listaNominal: 5551,
+                mujeres: 2950,
+                hombres: 2601,
+                jovenes: 1279,
+                edadesMujeres: [33, 56, 287, 283, 269, 275, 266, 218, 206, 177, 176, 704],
+                edadesHombres: [41, 46, 285, 248, 240, 237, 214, 219, 194, 169, 149, 559],
+                votos2015: { morena: 611, pan: 143, pri: 437 },
+                votos2018: { morena: 1916, pan: 351, pri: 554 },
+                votos2021: { morena: 1045, pan: 251, pri: 615 },
+                votos2024: { morena: 2839, pan: 353, pri: 588 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LA CONCEPCION": {
+                detallesSecciones: [
+                    { sec: "3081", nominal: 2361 },
+                    { sec: "3111", nominal: 3266 },
+                    { sec: "3093", nominal: 2530 },
+                    { sec: "3080", nominal: 2515 },
+                    { sec: "3082", nominal: 2793 },
+                    { sec: "3097", nominal: 2177 },
+                ],
+                listaNominal: 15642,
+                mujeres: 8243,
+                hombres: 7399,
+                jovenes: 3416,
+                edadesMujeres: [82, 137, 755, 786, 715, 716, 759, 665, 621, 580, 524, 1903],
+                edadesHombres: [87, 133, 751, 689, 686, 683, 586, 560, 567, 492, 452, 1713],
+                votos2015: { morena: 1605, pan: 531, pri: 1115 },
+                votos2018: { morena: 5122, pan: 1391, pri: 1561 },
+                votos2021: { morena: 2757, pan: 1099, pri: 1735 },
+                votos2024: { morena: 7464, pan: 1406, pri: 1656 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LA CRUZ": {
+                detallesSecciones: [
+                    { sec: "3059", nominal: 1815 },
+                    { sec: "3060", nominal: 1581 },
+                    { sec: "3050", nominal: 1386 },
+                    { sec: "3051", nominal: 1682 },
+                ],
+                listaNominal: 6464,
+                mujeres: 3450,
+                hombres: 3014,
+                jovenes: 1318,
+                edadesMujeres: [33, 56, 321, 281, 290, 311, 296, 290, 273, 243, 222, 834],
+                edadesHombres: [31, 46, 281, 269, 237, 249, 232, 230, 239, 211, 219, 770],
+                votos2015: { morena: 637, pan: 271, pri: 377 },
+                votos2018: { morena: 2049, pan: 620, pri: 588 },
+                votos2021: { morena: 1177, pan: 609, pri: 645 },
+                votos2024: { morena: 2977, pan: 636, pri: 586 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LA GUADALUPE": {
+                detallesSecciones: [
+                    { sec: "3080", nominal: 2515 },
+                    { sec: "3111", nominal: 3266 },
+                    { sec: "3058", nominal: 1916 },
+                ],
+                listaNominal: 7697,
+                mujeres: 4070,
+                hombres: 3627,
+                jovenes: 1683,
+                edadesMujeres: [42, 60, 357, 396, 355, 348, 385, 335, 319, 296, 269, 908],
+                edadesHombres: [41, 62, 381, 339, 325, 343, 280, 267, 268, 255, 203, 863],
+                votos2015: { morena: 806, pan: 258, pri: 512 },
+                votos2018: { morena: 2616, pan: 672, pri: 757 },
+                votos2021: { morena: 1406, pan: 513, pri: 790 },
+                votos2024: { morena: 3680, pan: 649, pri: 770 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LA MAGDALENA ATLITIC": {
+                detallesSecciones: [
+                    { sec: "3085", nominal: 1749 },
+                    { sec: "3079", nominal: 1290 },
+                    { sec: "3078", nominal: 1709 },
+                    { sec: "3084", nominal: 1222 },
+                    { sec: "3083", nominal: 1118 },
+                ],
+                listaNominal: 7088,
+                mujeres: 3749,
+                hombres: 3339,
+                jovenes: 1475,
+                edadesMujeres: [36, 45, 344, 321, 314, 328, 303, 317, 301, 276, 221, 943],
+                edadesHombres: [31, 39, 323, 336, 278, 281, 264, 257, 265, 237, 219, 809],
+                votos2015: { morena: 712, pan: 219, pri: 505 },
+                votos2018: { morena: 2262, pan: 651, pri: 766 },
+                votos2021: { morena: 1362, pan: 494, pri: 824 },
+                votos2024: { morena: 3514, pan: 659, pri: 768 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LA MALINCHE ": {
+                detallesSecciones: [
+                    { sec: "2997", nominal: 1818 },
+                    { sec: "3112", nominal: 1696 },
+                    { sec: "3009", nominal: 1629 },
+                    { sec: "3008", nominal: 1204 },
+                    { sec: "3010", nominal: 1045 },
+                    { sec: "2996", nominal: 1121 },
+                    { sec: "2985", nominal: 1675 },
+                    { sec: "2984", nominal: 1157 },
+                    { sec: "3103", nominal: 862 },
+                    { sec: "2986", nominal: 1188 },
+                ],
+                listaNominal: 13395,
+                mujeres: 7183,
+                hombres: 6212,
+                jovenes: 2795,
+                edadesMujeres: [70, 114, 650, 600, 621, 638, 664, 575, 617, 497, 431, 1706],
+                edadesHombres: [64, 91, 577, 628, 563, 561, 547, 483, 494, 436, 389, 1379],
+                votos2015: { morena: 1215, pan: 640, pri: 852 },
+                votos2018: { morena: 4192, pan: 1572, pri: 1251 },
+                votos2021: { morena: 2362, pan: 1475, pri: 1530 },
+                votos2024: { morena: 6108, pan: 1718, pri: 1251 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LAS CALLES": {
+                detallesSecciones: [
+                    { sec: "3080", nominal: 2515 },
+                ],
+                listaNominal: 2515,
+                mujeres: 1336,
+                hombres: 1179,
+                jovenes: 555,
+                edadesMujeres: [12, 19, 122, 126, 126, 108, 127, 108, 112, 93, 85, 298],
+                edadesHombres: [18, 17, 129, 112, 107, 120, 93, 82, 91, 75, 76, 259],
+                votos2015: { morena: 256, pan: 80, pri: 195 },
+                votos2018: { morena: 871, pan: 196, pri: 246 },
+                votos2021: { morena: 461, pan: 134, pri: 268 },
+                votos2024: { morena: 1184, pan: 198, pri: 260 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LAS CRUCES": {
+                detallesSecciones: [
+                    { sec: "2995", nominal: 1827 },
+                    { sec: "3018", nominal: 1422 },
+                    { sec: "3107", nominal: 164 },
+                    { sec: "3017", nominal: 1308 },
+                    { sec: "3019", nominal: 1379 },
+                    { sec: "3016", nominal: 1391 },
+                    { sec: "2994", nominal: 1475 },
+                    { sec: "2993", nominal: 1308 },
+                    { sec: "3114", nominal: 981 },
+                    { sec: "3102", nominal: 1054 },
+                ],
+                listaNominal: 12309,
+                mujeres: 6511,
+                hombres: 5798,
+                jovenes: 2652,
+                edadesMujeres: [61, 89, 617, 619, 584, 571, 563, 532, 574, 495, 439, 1367],
+                edadesHombres: [64, 80, 597, 545, 524, 473, 491, 442, 459, 436, 401, 1286],
+                votos2015: { morena: 1260, pan: 686, pri: 824 },
+                votos2018: { morena: 3878, pan: 1698, pri: 1111 },
+                votos2021: { morena: 2266, pan: 1533, pri: 1528 },
+                votos2024: { morena: 5764, pan: 1856, pri: 1269 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LAS HUERTAS": {
+                detallesSecciones: [
+                    { sec: "3092", nominal: 1916 },
+                ],
+                listaNominal: 1916,
+                mujeres: 1042,
+                hombres: 874,
+                jovenes: 432,
+                edadesMujeres: [9, 15, 99, 102, 108, 93, 102, 73, 76, 73, 57, 235],
+                edadesHombres: [18, 16, 95, 78, 86, 77, 85, 73, 57, 44, 51, 194],
+                votos2015: { morena: 235, pan: 49, pri: 161 },
+                votos2018: { morena: 712, pan: 110, pri: 171 },
+                votos2021: { morena: 415, pan: 91, pri: 155 },
+                votos2024: { morena: 948, pan: 108, pri: 171 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LAS PALMAS": {
+                detallesSecciones: [
+                    { sec: "3044", nominal: 2200 },
+                    { sec: "3113", nominal: 1526 },
+                    { sec: "3043", nominal: 1475 },
+                    { sec: "3045", nominal: 1612 },
+                ],
+                listaNominal: 6813,
+                mujeres: 3591,
+                hombres: 3222,
+                jovenes: 1459,
+                edadesMujeres: [42, 48, 335, 336, 316, 318, 330, 274, 287, 276, 219, 810],
+                edadesHombres: [41, 46, 319, 276, 276, 278, 259, 240, 258, 226, 185, 818],
+                votos2015: { morena: 651, pan: 216, pri: 438 },
+                votos2018: { morena: 2026, pan: 554, pri: 618 },
+                votos2021: { morena: 1130, pan: 431, pri: 685 },
+                votos2024: { morena: 3262, pan: 468, pri: 620 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LOMAS DE SAN BERNABE": {
+                detallesSecciones: [
+                    { sec: "3038", nominal: 2673 },
+                    { sec: "3039", nominal: 2199 },
+                ],
+                listaNominal: 4872,
+                mujeres: 2548,
+                hombres: 2324,
+                jovenes: 1056,
+                edadesMujeres: [19, 36, 227, 249, 246, 238, 237, 226, 231, 212, 155, 472],
+                edadesHombres: [27, 43, 236, 219, 224, 214, 214, 186, 210, 169, 137, 445],
+                votos2015: { morena: 552, pan: 116, pri: 345 },
+                votos2018: { morena: 1656, pan: 356, pri: 555 },
+                votos2021: { morena: 1007, pan: 266, pri: 585 },
+                votos2024: { morena: 2505, pan: 341, pri: 440 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LOMAS QUEBRADAS": {
+                detallesSecciones: [
+                    { sec: "2987", nominal: 2176 },
+                    { sec: "3013", nominal: 1803 },
+                    { sec: "2988", nominal: 1307 },
+                    { sec: "3104", nominal: 2134 },
+                ],
+                listaNominal: 7420,
+                mujeres: 4004,
+                hombres: 3416,
+                jovenes: 1475,
+                edadesMujeres: [37, 51, 350, 318, 304, 321, 315, 309, 320, 276, 250, 1153],
+                edadesHombres: [31, 55, 342, 291, 281, 281, 252, 236, 238, 223, 226, 960],
+                votos2015: { morena: 681, pan: 494, pri: 512 },
+                votos2018: { morena: 2390, pan: 1133, pri: 752 },
+                votos2021: { morena: 1369, pan: 1042, pri: 894 },
+                votos2024: { morena: 3447, pan: 1165, pri: 820 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "LOS PADRES": {
+                detallesSecciones: [
+                    { sec: "3049", nominal: 1238 },
+                    { sec: "3048", nominal: 2266 },
+                ],
+                listaNominal: 3504,
+                mujeres: 1888,
+                hombres: 1616,
+                jovenes: 733,
+                edadesMujeres: [19, 29, 160, 169, 172, 168, 181, 149, 142, 137, 107, 455],
+                edadesHombres: [27, 26, 175, 128, 141, 147, 145, 113, 112, 125, 115, 362],
+                votos2015: { morena: 374, pan: 147, pri: 226 },
+                votos2018: { morena: 1178, pan: 285, pri: 340 },
+                votos2021: { morena: 719, pan: 257, pri: 337 },
+                votos2024: { morena: 1678, pan: 350, pri: 310 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "PLAZA HIDALGO": {
+                detallesSecciones: [
+                    { sec: "3081", nominal: 2361 },
+                    { sec: "3080", nominal: 2515 },
+                ],
+                listaNominal: 4876,
+                mujeres: 2577,
+                hombres: 2299,
+                jovenes: 1099,
+                edadesMujeres: [20, 36, 237, 245, 233, 203, 239, 199, 198, 187, 171, 609],
+                edadesHombres: [37, 39, 239, 219, 198, 209, 186, 151, 171, 146, 153, 551],
+                votos2015: { morena: 520, pan: 146, pri: 388 },
+                votos2018: { morena: 1642, pan: 395, pri: 504 },
+                votos2021: { morena: 855, pan: 301, pri: 539 },
+                votos2024: { morena: 2362, pan: 393, pri: 503 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "PUEBLO DE SAN NICOLAS TOTOLOAPAN": {
+                detallesSecciones: [
+                    { sec: "3094", nominal: 2355 },
+                    { sec: "3095", nominal: 3083 },
+                    { sec: "3093", nominal: 2530 },
+                    { sec: "3096", nominal: 2267 },
+                ],
+                listaNominal: 10235,
+                mujeres: 5411,
+                hombres: 4824,
+                jovenes: 2275,
+                edadesMujeres: [45, 87, 508, 480, 506, 474, 497, 439, 444, 381, 350, 1200],
+                edadesHombres: [64, 91, 513, 447, 449, 423, 385, 367, 368, 329, 274, 1114],
+                votos2015: { morena: 1017, pan: 374, pri: 692 },
+                votos2018: { morena: 3405, pan: 914, pri: 928 },
+                votos2021: { morena: 1845, pan: 765, pri: 1116 },
+                votos2024: { morena: 4872, pan: 887, pri: 1058 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "PUENTE COLORADO": {
+                detallesSecciones: [
+                    { sec: "3022", nominal: 1475 },
+                    { sec: "3021", nominal: 2378 },
+                ],
+                listaNominal: 3853,
+                mujeres: 2060,
+                hombres: 1793,
+                jovenes: 851,
+                edadesMujeres: [19, 29, 185, 203, 169, 178, 162, 167, 180, 137, 142, 489],
+                edadesHombres: [31, 33, 196, 156, 171, 154, 154, 146, 139, 123, 115, 375],
+                votos2015: { morena: 417, pan: 153, pri: 282 },
+                votos2018: { morena: 1251, pan: 337, pri: 423 },
+                votos2021: { morena: 712, pan: 260, pri: 505 },
+                votos2024: { morena: 1968, pan: 288, pri: 387 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "SAN BARTOLO AMEYALCO": {
+                detallesSecciones: [
+                    { sec: "3056", nominal: 1930 },
+                    { sec: "3052", nominal: 2289 },
+                    { sec: "3110", nominal: 1554 },
+                    { sec: "3062", nominal: 1392 },
+                    { sec: "3057", nominal: 1610 },
+                    { sec: "3063", nominal: 1849 },
+                    { sec: "3061", nominal: 2197 },
+                ],
+                listaNominal: 12821,
+                mujeres: 6766,
+                hombres: 6055,
+                jovenes: 2950,
+                edadesMujeres: [59, 102, 638, 629, 622, 594, 608, 554, 552, 501, 450, 1457],
+                edadesHombres: [73, 128, 663, 563, 539, 532, 501, 452, 437, 439, 396, 1332],
+                votos2015: { morena: 1045, pan: 494, pri: 820 },
+                votos2018: { morena: 3656, pan: 1121, pri: 1106 },
+                votos2021: { morena: 2118, pan: 914, pri: 1113 },
+                votos2024: { morena: 5885, pan: 1117, pri: 1110 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "SAN FRANCISCO ": {
+                detallesSecciones: [
+                    { sec: "3030", nominal: 1967 },
+                    { sec: "3029", nominal: 1621 },
+                    { sec: "3028", nominal: 2005 },
+                    { sec: "3026", nominal: 2262 },
+                    { sec: "3027", nominal: 2056 },
+                    { sec: "3109", nominal: 1798 },
+                ],
+                listaNominal: 11709,
+                mujeres: 6220,
+                hombres: 5489,
+                jovenes: 2470,
+                edadesMujeres: [59, 87, 545, 547, 521, 534, 535, 497, 497, 431, 401, 1566],
+                edadesHombres: [41, 62, 577, 486, 442, 472, 452, 402, 417, 345, 335, 1460],
+                votos2015: { morena: 1195, pan: 531, pri: 752 },
+                votos2018: { morena: 3959, pan: 1391, pri: 1064 },
+                votos2021: { morena: 2162, pan: 1099, pri: 1182 },
+                votos2024: { morena: 5621, pan: 1406, pri: 1146 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "SAN JERONIMO ACULCO - LIDICE": {
+                detallesSecciones: [
+                    { sec: "2976", nominal: 1108 },
+                    { sec: "2980", nominal: 1845 },
+                    { sec: "2979", nominal: 1533 },
+                    { sec: "2981", nominal: 1063 },
+                    { sec: "2977", nominal: 871 },
+                    { sec: "2982", nominal: 1551 },
+                    { sec: "2975", nominal: 477 },
+                    { sec: "2978", nominal: 1667 },
+                    { sec: "2974", nominal: 759 },
+                    { sec: "2973", nominal: 761 },
+                    { sec: "2972", nominal: 741 },
+                ],
+                listaNominal: 12376,
+                mujeres: 6868,
+                hombres: 5508,
+                jovenes: 1876,
+                edadesMujeres: [59, 70, 414, 401, 381, 417, 418, 414, 454, 404, 383, 3053],
+                edadesHombres: [41, 62, 386, 343, 342, 382, 329, 329, 328, 252, 280, 2434],
+                votos2015: { morena: 1067, pan: 1056, pri: 777 },
+                votos2018: { morena: 3348, pan: 2530, pri: 1163 },
+                votos2021: { morena: 1918, pan: 2360, pri: 1332 },
+                votos2024: { morena: 4851, pan: 2618, pri: 1205 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "SAN NICOLAS TOTOLOAPAN": {
+                detallesSecciones: [
+                    { sec: "3099", nominal: 1658 },
+                    { sec: "3100", nominal: 905 },
+                    { sec: "3101", nominal: 583 },
+                    { sec: "3093", nominal: 2530 },
+                    { sec: "3096", nominal: 2267 },
+                ],
+                listaNominal: 7943,
+                mujeres: 4181,
+                hombres: 3762,
+                jovenes: 1782,
+                edadesMujeres: [42, 60, 414, 401, 381, 417, 418, 414, 454, 404, 383, 393],
+                edadesHombres: [41, 62, 386, 343, 342, 382, 329, 329, 328, 252, 280, 688],
+                votos2015: { morena: 638, pan: 226, pri: 500 },
+                votos2018: { morena: 2162, pan: 620, pri: 710 },
+                votos2021: { morena: 1152, pan: 513, pri: 894 },
+                votos2024: { morena: 3129, pan: 649, pri: 820 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "TIERRA COLORADA": {
+                detallesSecciones: [
+                    { sec: "3087", nominal: 1899 },
+                    { sec: "3097", nominal: 2177 },
+                ],
+                listaNominal: 4076,
+                mujeres: 2176,
+                hombres: 1900,
+                jovenes: 938,
+                edadesMujeres: [22, 36, 214, 203, 202, 211, 203, 169, 148, 128, 126, 514],
+                edadesHombres: [31, 33, 201, 178, 174, 185, 153, 154, 142, 122, 115, 412],
+                votos2015: { morena: 457, pan: 104, pri: 326 },
+                votos2018: { morena: 1422, pan: 253, pri: 418 },
+                votos2021: { morena: 771, pan: 180, pri: 440 },
+                votos2024: { morena: 2095, pan: 253, pri: 418 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
+            },
+            "TIERRA UNIDA": {
+                detallesSecciones: [
+                    { sec: "3118", nominal: 3496 },
+                ],
+                listaNominal: 3496,
+                mujeres: 1854,
+                hombres: 1642,
+                jovenes: 959,
+                edadesMujeres: [20, 52, 237, 192, 197, 213, 161, 174, 155, 147, 116, 190],
+                edadesHombres: [24, 33, 218, 183, 180, 215, 156, 147, 124, 108, 94, 160],
+                votos2015: { morena: 223, pan: 35, pri: 226 },
+                votos2018: { morena: 1121, pan: 178, pri: 396 },
+                votos2021: { morena: 675, pan: 130, pri: 382 },
+                votos2024: { morena: 1393, pan: 254, pri: 300 },
+                encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 }
             }
         };
     </script>
@@ -88,14 +762,10 @@
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('megaDashboard', () => ({
-                // Control Principal
-                moduloActivo: 'territorio', // 'territorio' o 'redes'
-                
-                // Variables Redes Sociales
+                moduloActivo: 'territorio', 
                 pestañaRedes: 'general', 
                 mesSeleccionado: 'febrero_2026',
 
-                // Datos Redes (Tu código original integrado)
                 historicoRedes: {
                     'enero_2026': {
                         mes: 'Enero', anio: '2026',
@@ -139,7 +809,6 @@
                     }
                 },
 
-                // Getters Redes
                 get datosMes() { return this.historicoRedes[this.mesSeleccionado]; },
                 get mes() { return this.datosMes.mes; },
                 get anio() { return this.datosMes.anio; },
@@ -148,17 +817,9 @@
                 get totalSeguidores() { return this.plataformas.facebook.seguidoresNuevos + this.plataformas.instagram.seguidoresNuevos + this.plataformas.tiktok.seguidoresNuevos; },
                 get promedioInteraccion() { return ((this.plataformas.facebook.interaccion + this.plataformas.instagram.interaccion + this.plataformas.tiktok.interaccion) / 3).toFixed(1); },
                 get dataActiva() { return (this.pestañaRedes === 'general' || this.pestañaRedes === 'metas') ? this.plataformas.instagram : this.plataformas[this.pestañaRedes]; },
-                get maxInteraccion() {
-                    return Math.max(
-                        this.plataformas.facebook.interaccion, this.plataformas.facebook.meta,
-                        this.plataformas.instagram.interaccion, this.plataformas.instagram.meta,
-                        this.plataformas.tiktok.interaccion, this.plataformas.tiktok.meta, 10
-                    );
-                },
+                get maxInteraccion() { return Math.max( this.plataformas.facebook.interaccion, this.plataformas.facebook.meta, this.plataformas.instagram.interaccion, this.plataformas.instagram.meta, this.plataformas.tiktok.interaccion, this.plataformas.tiktok.meta, 10 ); },
 
-                // Inicializador
                 init() {
-                    // Si cambiamos de módulo, avisamos a Chart.js que se redibuje (ya que display:none los pausa)
                     this.$watch('moduloActivo', value => {
                         if(value === 'territorio') {
                             setTimeout(() => {
@@ -182,71 +843,50 @@
     <!-- ================================================================= -->
     <aside class="w-72 bg-white flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.02)] z-20 shrink-0 border-r border-gray-100">
         
-        <!-- HEADER SIDEBAR -->
         <div class="p-6 border-b border-gray-100 bg-gray-50/50">
             <h1 class="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">Campaña OS</h1>
             <p class="text-xs font-bold text-brand-maroon tracking-wider uppercase">Ximena Molina</p>
         </div>
 
-        <!-- SELECTOR DE MÓDULOS GLOBALES -->
         <div class="p-4 border-b border-gray-100 grid grid-cols-2 gap-2">
-            <button @click="moduloActivo = 'territorio'" 
-                    :class="moduloActivo === 'territorio' ? 'bg-brand-dark text-white shadow-md' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'"
-                    class="flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-200">
+            <button @click="moduloActivo = 'territorio'" :class="moduloActivo === 'territorio' ? 'bg-brand-dark text-white shadow-md' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'" class="flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-200">
                 <i class="fa-solid fa-map-location-dot mb-1 text-lg"></i>
                 <span class="text-[10px] font-bold uppercase tracking-wider">Territorio</span>
             </button>
-            <button @click="moduloActivo = 'redes'" 
-                    :class="moduloActivo === 'redes' ? 'bg-brand-dark text-white shadow-md' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'"
-                    class="flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-200">
+            <button @click="moduloActivo = 'redes'" :class="moduloActivo === 'redes' ? 'bg-brand-dark text-white shadow-md' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'" class="flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-200">
                 <i class="fa-solid fa-mobile-screen mb-1 text-lg"></i>
                 <span class="text-[10px] font-bold uppercase tracking-wider">Redes</span>
             </button>
         </div>
 
-        <!-- ÁREA DE SUBMENÚS DINÁMICOS -->
         <div class="flex-1 overflow-y-auto no-scrollbar py-4">
             
-            <!-- SUBMENÚ TERRITORIO -->
             <div x-show="moduloActivo === 'territorio'" x-transition.opacity.duration.300ms class="px-4 space-y-6">
                 <div>
                     <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Unidades Territoriales</h2>
-                    <nav class="space-y-1" id="coloniaMenu">
-                        <!-- Generado por Vanilla JS -->
-                    </nav>
+                    <nav class="space-y-1" id="coloniaMenu"></nav>
                 </div>
                 <div>
-                    <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Herramientas de Campo</h2>
+                    <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Herramientas</h2>
                     <button onclick="abrirModalConstruccion()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 transition-colors">
-                        <i class="fa-solid fa-clipboard-question w-5 text-gray-400"></i> Encuestas
+                        <i class="fa-solid fa-clipboard-question w-5 text-gray-400"></i> Captura Encuestas
                     </button>
                 </div>
             </div>
 
-            <!-- SUBMENÚ REDES SOCIALES -->
             <div x-show="moduloActivo === 'redes'" x-cloak x-transition.opacity.duration.300ms class="px-4 space-y-6">
                 <div>
                     <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Métricas de Plataforma</p>
                     <nav class="space-y-1">
-                        <button @click="pestañaRedes = 'general'" :class="pestañaRedes === 'general' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm">
-                            <i class="fa-solid fa-chart-line w-5 text-center"></i> General
-                        </button>
-                        <button @click="pestañaRedes = 'instagram'" :class="pestañaRedes === 'instagram' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm">
-                            <i class="fa-brands fa-instagram w-5 text-center text-lg"></i> Instagram
-                        </button>
-                        <button @click="pestañaRedes = 'facebook'" :class="pestañaRedes === 'facebook' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm">
-                            <i class="fa-brands fa-facebook w-5 text-center text-lg"></i> Facebook
-                        </button>
-                        <button @click="pestañaRedes = 'tiktok'" :class="pestañaRedes === 'tiktok' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm">
-                            <i class="fa-brands fa-tiktok w-5 text-center text-lg"></i> TikTok
-                        </button>
+                        <button @click="pestañaRedes = 'general'" :class="pestañaRedes === 'general' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-solid fa-chart-line w-5 text-center"></i> General</button>
+                        <button @click="pestañaRedes = 'instagram'" :class="pestañaRedes === 'instagram' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-brands fa-instagram w-5 text-center text-lg"></i> Instagram</button>
+                        <button @click="pestañaRedes = 'facebook'" :class="pestañaRedes === 'facebook' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-brands fa-facebook w-5 text-center text-lg"></i> Facebook</button>
+                        <button @click="pestañaRedes = 'tiktok'" :class="pestañaRedes === 'tiktok' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-brands fa-tiktok w-5 text-center text-lg"></i> TikTok</button>
                     </nav>
                 </div>
                 <div>
                     <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Análisis</h2>
-                    <button @click="pestañaRedes = 'metas'" :class="pestañaRedes === 'metas' ? 'bg-brand-yellow text-brand-dark shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-bold text-sm">
-                        <i class="fa-solid fa-bullseye w-5 text-center text-lg"></i> Estrategia
-                    </button>
+                    <button @click="pestañaRedes = 'metas'" :class="pestañaRedes === 'metas' ? 'bg-brand-yellow text-brand-dark shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-bold text-sm"><i class="fa-solid fa-bullseye w-5 text-center text-lg"></i> Estrategia</button>
                 </div>
             </div>
 
@@ -259,7 +899,7 @@
     <main class="flex-1 overflow-y-auto no-scrollbar relative w-full">
 
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-        <!-- MÓDULO 1: TERRITORIO (Fichas Técnicas) -->
+        <!-- MÓDULO 1: TERRITORIO -->
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <div x-show="moduloActivo === 'territorio'" x-transition.opacity.duration.400ms class="p-8 max-w-7xl mx-auto space-y-6">
             
@@ -273,7 +913,6 @@
                 </button>
             </div>
 
-            <!-- KPIs Territoriales -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50">
                     <div class="text-gray-400 text-[10px] font-bold tracking-wider mb-4 uppercase">Lista Nominal Total</div>
@@ -296,16 +935,11 @@
                 </div>
             </div>
 
-            <!-- Desglose Secciones -->
             <div class="pt-2">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-sm font-bold text-gray-900">Desglose por Sección Electoral</h3>
-                    <span class="text-xs font-medium text-gray-500">Peso en la colonia</span>
-                </div>
+                <div class="flex items-center justify-between mb-4"><h3 class="text-sm font-bold text-gray-900">Desglose por Sección Electoral</h3><span class="text-xs font-medium text-gray-500">Peso en la colonia</span></div>
                 <div id="uiSeccionesGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
             </div>
 
-            <!-- Gráficos Territoriales -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
                 <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 flex flex-col justify-center">
                     <h3 class="text-sm font-bold text-gray-900 mb-6">Demografía</h3>
@@ -348,12 +982,11 @@
         </div>
 
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-        <!-- MÓDULO 2: REDES SOCIALES (Estrategia) -->
+        <!-- MÓDULO 2: REDES SOCIALES -->
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <div x-show="moduloActivo === 'redes'" x-cloak x-transition.opacity.duration.400ms class="p-8 max-w-7xl mx-auto">
             
             <header class="flex items-center justify-between mb-8">
-                <!-- Selector de Meses -->
                 <div class="bg-white rounded-full shadow-sm py-1.5 px-1.5 border border-gray-100 flex items-center gap-1">
                     <template x-for="(datos, idMes) in historicoRedes" :key="idMes">
                         <button @click="mesSeleccionado = idMes" 
@@ -364,70 +997,45 @@
                 </div>
             </header>
 
-            <!-- VISTA GENERAL REDES -->
             <div x-show="pestañaRedes === 'general'" x-transition class="space-y-8">
-                <div>
-                    <h2 class="text-2xl font-extrabold text-gray-900">Métricas Globales Digitales</h2>
-                    <p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p>
-                </div>
+                <div><h2 class="text-2xl font-extrabold text-gray-900">Métricas Globales Digitales</h2><p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 flex flex-col justify-between">
-                        <p class="text-[10px] font-bold text-gray-400 mb-4 uppercase tracking-wider"><i class="fa-solid fa-eye mr-1"></i> Impacto Total</p>
-                        <h3 class="text-4xl font-extrabold text-gray-800" x-text="totalImpresiones.toLocaleString()"></h3>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 flex flex-col justify-between">
-                        <p class="text-[10px] font-bold text-gray-400 mb-4 uppercase tracking-wider"><i class="fa-solid fa-users mr-1"></i> Crecimiento Global</p>
-                        <h3 class="text-4xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3>
-                    </div>
+                    <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-eye mr-1"></i> Impacto Total</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalImpresiones.toLocaleString()"></h3></div>
+                    <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-users mr-1"></i> Crecimiento Global</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3></div>
                     <div class="bg-brand-dark text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between relative overflow-hidden">
                         <div class="absolute -right-6 -top-6 w-24 h-24 bg-brand-maroon opacity-40 rounded-full blur-2xl"></div>
-                        <p class="text-[10px] font-bold text-gray-400 mb-4 uppercase tracking-wider relative z-10"><i class="fa-solid fa-bolt mr-1 text-brand-yellow"></i> Interacción Promedio</p>
-                        <div class="flex items-end justify-between relative z-10">
-                            <h3 class="text-4xl font-extrabold text-white"><span x-text="promedioInteraccion"></span><span class="text-xl text-gray-300">%</span></h3>
-                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 mb-4 uppercase relative z-10"><i class="fa-solid fa-bolt mr-1 text-brand-yellow"></i> Interacción Promedio</p>
+                        <div class="flex items-end justify-between relative z-10"><h3 class="text-4xl font-extrabold text-white"><span x-text="promedioInteraccion"></span><span class="text-xl text-gray-300">%</span></h3></div>
                     </div>
                 </div>
-                <!-- Barras Comparativas Redes -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
-                    <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow">
                         <h3 class="text-sm font-bold text-gray-800 mb-6">Impresiones por Plataforma</h3>
                         <div class="space-y-5">
-                            <div>
-                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>Instagram</span><span class="text-gray-900" x-text="plataformas.instagram.impresiones.toLocaleString()"></span></div>
-                                <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-maroon" :style="'width: ' + ((plataformas.instagram.impresiones / totalImpresiones) * 100) + '%'"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>Facebook</span><span class="text-gray-900" x-text="plataformas.facebook.impresiones.toLocaleString()"></span></div>
-                                <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-blue" :style="'width: ' + ((plataformas.facebook.impresiones / totalImpresiones) * 100) + '%'"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>TikTok</span><span class="text-gray-900" x-text="plataformas.tiktok.impresiones.toLocaleString()"></span></div>
-                                <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-dark" :style="'width: ' + ((plataformas.tiktok.impresiones / totalImpresiones) * 100) + '%'"></div></div>
-                            </div>
+                            <div><div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>Instagram</span><span class="text-gray-900" x-text="plataformas.instagram.impresiones.toLocaleString()"></span></div><div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-maroon" :style="'width: ' + ((plataformas.instagram.impresiones / totalImpresiones) * 100) + '%'"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>Facebook</span><span class="text-gray-900" x-text="plataformas.facebook.impresiones.toLocaleString()"></span></div><div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-blue" :style="'width: ' + ((plataformas.facebook.impresiones / totalImpresiones) * 100) + '%'"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>TikTok</span><span class="text-gray-900" x-text="plataformas.tiktok.impresiones.toLocaleString()"></span></div><div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-dark" :style="'width: ' + ((plataformas.tiktok.impresiones / totalImpresiones) * 100) + '%'"></div></div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- VISTA ESPECÍFICA DE CADA RED -->
             <div x-show="pestañaRedes !== 'general' && pestañaRedes !== 'metas'" x-cloak x-transition class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="bg-white rounded-2xl p-5 custom-shadow border border-gray-100/50"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Impresiones</p><h3 class="text-3xl font-extrabold text-gray-800" x-text="dataActiva.impresiones.toLocaleString()"></h3></div>
-                    <div class="bg-white rounded-2xl p-5 custom-shadow border border-gray-100/50"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Seguidores</p><h3 class="text-3xl font-extrabold text-gray-800" x-text="dataActiva.seguidoresNuevos.toLocaleString()"></h3></div>
-                    <div class="bg-white rounded-2xl p-5 custom-shadow border border-gray-100/50"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Interacción</p><h3 class="text-3xl font-extrabold text-gray-800"><span x-text="dataActiva.interaccion"></span>%</h3></div>
+                    <div class="bg-white rounded-2xl p-5 custom-shadow"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Impresiones</p><h3 class="text-3xl font-extrabold text-gray-800" x-text="dataActiva.impresiones.toLocaleString()"></h3></div>
+                    <div class="bg-white rounded-2xl p-5 custom-shadow"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Seguidores</p><h3 class="text-3xl font-extrabold text-gray-800" x-text="dataActiva.seguidoresNuevos.toLocaleString()"></h3></div>
+                    <div class="bg-white rounded-2xl p-5 custom-shadow"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Interacción</p><h3 class="text-3xl font-extrabold text-gray-800"><span x-text="dataActiva.interaccion"></span>%</h3></div>
                     <div class="bg-brand-dark text-white rounded-2xl p-5 shadow-lg"><p class="text-[10px] font-bold text-brand-yellow mb-2 uppercase">Meta Fijada</p><h3 class="text-3xl font-extrabold text-white"><span x-text="dataActiva.meta"></span>%</h3></div>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 border-l-4 border-l-brand-maroon">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow border-l-4 border-l-brand-maroon">
                         <h3 class="text-sm font-bold text-gray-800 mb-4">Contenido Destacado</h3>
                         <div class="space-y-4">
                             <div class="bg-gray-50 p-3 rounded-xl"><p class="text-[10px] font-bold text-gray-400 uppercase mb-1">Volumen Creado</p><p class="text-sm font-bold text-gray-800" x-text="dataActiva.frecuencia"></p></div>
                             <div class="bg-gray-50 p-3 rounded-xl"><p class="text-[10px] font-bold text-gray-400 uppercase mb-1">Formato Estrella</p><p class="text-xs text-gray-600" x-text="dataActiva.formato"></p></div>
                         </div>
                     </div>
-                    <!-- FODA -->
-                    <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow grid grid-cols-2 gap-4">
                         <div><h4 class="font-bold text-[10px] uppercase text-emerald-500 mb-1">F</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.fortalezas"></p></div>
                         <div><h4 class="font-bold text-[10px] uppercase text-brand-blue mb-1">O</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.oportunidades"></p></div>
                         <div><h4 class="font-bold text-[10px] uppercase text-brand-yellow mb-1">D</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.debilidades"></p></div>
@@ -436,33 +1044,23 @@
                 </div>
             </div>
 
-            <!-- VISTA ESTRATEGIA (Metas y Recomendaciones) -->
             <div x-show="pestañaRedes === 'metas'" x-cloak x-transition class="space-y-6">
-                 <div>
-                    <h2 class="text-2xl font-extrabold text-gray-900">Directrices Estratégicas</h2>
-                    <p class="text-sm text-gray-500 mt-1">Recomendaciones de campaña para el mes en curso.</p>
-                </div>
+                 <div><h2 class="text-2xl font-extrabold text-gray-900">Directrices Estratégicas</h2><p class="text-sm text-gray-500 mt-1">Recomendaciones de campaña.</p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-[#C13584]">
                         <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-instagram"></i> Instagram</h3>
-                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p>
-                        <p class="text-sm text-gray-700 mb-4" x-text="plataformas.instagram.metasText"></p>
-                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p>
-                        <p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.instagram.recomendacion"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p><p class="text-sm text-gray-700 mb-4" x-text="plataformas.instagram.metasText"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p><p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.instagram.recomendacion"></p>
                     </div>
                     <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-brand-blue">
                         <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-facebook"></i> Facebook</h3>
-                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p>
-                        <p class="text-sm text-gray-700 mb-4" x-text="plataformas.facebook.metasText"></p>
-                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p>
-                        <p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.facebook.recomendacion"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p><p class="text-sm text-gray-700 mb-4" x-text="plataformas.facebook.metasText"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p><p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.facebook.recomendacion"></p>
                     </div>
                     <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-brand-dark">
                         <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-tiktok"></i> TikTok</h3>
-                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p>
-                        <p class="text-sm text-gray-700 mb-4" x-text="plataformas.tiktok.metasText"></p>
-                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p>
-                        <p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.tiktok.recomendacion"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p><p class="text-sm text-gray-700 mb-4" x-text="plataformas.tiktok.metasText"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p><p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.tiktok.recomendacion"></p>
                     </div>
                 </div>
             </div>
@@ -473,9 +1071,7 @@
     <!-- Modal Próximamente -->
     <div id="modalConstruccion" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-center transform scale-95 transition-transform duration-300">
-            <div class="w-16 h-16 bg-brand-maroon/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fa-solid fa-lock text-brand-maroon text-2xl"></i>
-            </div>
+            <div class="w-16 h-16 bg-brand-maroon/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-lock text-brand-maroon text-2xl"></i></div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">Módulo Próximamente</h3>
             <p class="text-gray-500 mb-6 text-sm">Disponible al inicio de recorridos.</p>
             <button onclick="cerrarModalConstruccion()" class="w-full py-2.5 bg-brand-dark text-white rounded-xl font-bold hover:bg-gray-800">Cerrar</button>
@@ -490,7 +1086,6 @@
         Chart.defaults.font.family = "'Inter', sans-serif"; Chart.defaults.color = '#9CA3AF';
         
         function initCharts() {
-            // Pirámide
             const ctxPyr = document.getElementById('pyramidChart').getContext('2d');
             window.pyramidChartInstance = new Chart(ctxPyr, {
                 type: 'bar',
@@ -500,7 +1095,6 @@
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { boxWidth: 8, font: {size: 10} } } }, scales: { x: { grid: { display: false } }, y: { border: { display: false }, grid: { color: '#F3F4F6' } } } }
             });
 
-            // Histórica
             const ctxHist = document.getElementById('historicalChart').getContext('2d');
             window.histChartInstance = new Chart(ctxHist, {
                 type: 'line',
@@ -511,7 +1105,6 @@
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { boxWidth: 8, font: {size: 10} } } }, scales: { y: { beginAtZero: true, grid: { color: '#F3F4F6', drawBorder: false } }, x: { grid: { display: false } } } }
             });
 
-            // Encuestas (Simulación)
             const ctxPoll = document.getElementById('pollChart').getContext('2d');
             window.pollChartInstance = new Chart(ctxPoll, {
                 type: 'bar',
@@ -522,7 +1115,7 @@
         }
 
         function loadColoniaData(coloniaName) {
-            const data = dbTerritorio[coloniaName]; if (!data) return;
+            const data = db[coloniaName]; if (!data) return;
             const formatNum = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
             document.getElementById('uiColoniaName').textContent = coloniaName;
@@ -531,7 +1124,6 @@
             document.getElementById('uiVotos2024').textContent = formatNum(data.votos2024.morena);
             document.getElementById('uiIntencion').innerHTML = `${data.encuesta.morena}<span class="text-2xl text-gray-400">%</span>`;
 
-            // Grid de Secciones
             const cGrid = document.getElementById('uiSeccionesGrid'); cGrid.innerHTML = '';
             data.detallesSecciones.forEach(sec => {
                 const pct = ((sec.nominal / data.listaNominal) * 100).toFixed(1);
@@ -545,19 +1137,21 @@
                     </div>`;
             });
 
-            // Demografía
             const pMuj = ((data.mujeres/data.listaNominal)*100).toFixed(1); document.getElementById('uiTextMujeres').innerHTML = `${formatNum(data.mujeres)} <span class="text-[10px] text-gray-400">(${pMuj}%)</span>`; document.getElementById('uiBarMujeres').style.width = `${pMuj}%`;
             const pHom = ((data.hombres/data.listaNominal)*100).toFixed(1); document.getElementById('uiTextHombres').innerHTML = `${formatNum(data.hombres)} <span class="text-[10px] text-gray-400">(${pHom}%)</span>`; document.getElementById('uiBarHombres').style.width = `${pHom}%`;
             const pJov = ((data.jovenes/data.listaNominal)*100).toFixed(1); document.getElementById('uiTextJovenes').innerHTML = `${formatNum(data.jovenes)} <span class="text-[10px] text-gray-400">(${pJov}%)</span>`; document.getElementById('uiBarJovenes').style.width = `${pJov}%`;
 
-            // Gráficas Update
+            let votos21 = data.votos2021.morena || 1;
+            let votos24 = data.votos2024.morena || 0;
+            const crecimiento = (((votos24 - votos21) / votos21) * 100).toFixed(1);
+            document.getElementById('uiCrecimiento').innerHTML = crecimiento >= 0 ? `<span class="text-emerald-500 font-bold">+${crecimiento}%</span> vs 2021` : `<span class="text-red-500 font-bold">${crecimiento}%</span> vs 2021`;
+
             window.pyramidChartInstance.data.datasets[0].data = data.edadesMujeres; window.pyramidChartInstance.data.datasets[1].data = data.edadesHombres; window.pyramidChartInstance.update();
             window.histChartInstance.data.datasets[0].data = [data.votos2015.morena, data.votos2018.morena, data.votos2021.morena, data.votos2024.morena];
             window.histChartInstance.data.datasets[1].data = [data.votos2015.pan, data.votos2018.pan, data.votos2021.pan, data.votos2024.pan];
             window.histChartInstance.data.datasets[2].data = [data.votos2015.pri, data.votos2018.pri, data.votos2021.pri, data.votos2024.pri]; window.histChartInstance.update();
             window.pollChartInstance.data.datasets[0].data = [data.encuesta.morena, data.encuesta.pan, data.encuesta.pri, data.encuesta.indecisos]; window.pollChartInstance.update();
 
-            // Menu CSS
             document.querySelectorAll('.nav-item-terr').forEach(i => {
                 if(i.dataset.colonia === coloniaName) { i.classList.add('active'); i.classList.remove('text-gray-500', 'hover:bg-gray-50'); }
                 else { i.classList.remove('active'); i.classList.add('text-gray-500', 'hover:bg-gray-50'); }
@@ -567,17 +1161,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             initCharts();
             const menu = document.getElementById('coloniaMenu');
-            Object.keys(dbTerritorio).forEach(colonia => {
+            const colonias = Object.keys(db);
+            
+            colonias.forEach(colonia => {
                 const a = document.createElement('a'); a.href = "#"; a.dataset.colonia = colonia;
-                a.className = `nav-item-terr flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl transition-all cursor-pointer`;
-                a.innerHTML = `<i class="fa-solid fa-map-pin w-4 text-center"></i> ${colonia}`;
+                a.className = `nav-item-terr flex items-center gap-3 px-4 py-2 text-sm font-medium rounded-xl transition-all cursor-pointer`;
+                
+                // Capitalizar formato de nombre (EJEMPLO -> Ejemplo) para que se vea más limpio
+                const nombreLimpio = colonia.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+                // Recortar si es muy largo
+                const nombreCorto = nombreLimpio.substring(0, 24) + (nombreLimpio.length > 24 ? '...' : '');
+
+                a.innerHTML = `<i class="fa-solid fa-map-pin w-4 text-center"></i> ${nombreCorto}`;
                 a.onclick = (e) => { e.preventDefault(); loadColoniaData(colonia); };
                 menu.appendChild(a);
             });
-            loadColoniaData("El Gavillero");
+            
+            if(colonias.length > 0) loadColoniaData(colonias[0]);
         });
 
-        // Funciones Modal
         function abrirModalConstruccion() { const m = document.getElementById('modalConstruccion'); const c = m.querySelector('div'); m.classList.remove('hidden'); setTimeout(() => { m.classList.remove('opacity-0'); c.classList.remove('scale-95'); c.classList.add('scale-100'); }, 10); }
         function cerrarModalConstruccion() { const m = document.getElementById('modalConstruccion'); const c = m.querySelector('div'); m.classList.add('opacity-0'); c.classList.remove('scale-100'); c.classList.add('scale-95'); setTimeout(() => m.classList.add('hidden'), 300); }
     </script>
