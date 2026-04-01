@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campaña OS - Ximena Molina</title>
+    <title>DASHBOARD - Ximena Molina</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -128,8 +128,8 @@
                     'marzo_2026': {
                         mes: 'Marzo', anio: '2026',
                         plataformas: {
-                            facebook: { impresiones: 105713, seguidoresNuevos: 68, interaccion: 2.16, meta: 4.0, hombres: 72, mujeres: 28, frecuencia: "6 Reels, 12 Fotos, 2 Textos, 1 Compartida (21 total)", formato: "Reels (47%), Fotos (41.7%), Texto (8.6%), Otros (2.7%)", metasText: "Duplicar la tasa de nuevos seguidores mensuales mediante CTAs.", recomendacion: "Publicar 3 álbumes de fotos semanales. Horarios de Oro: 18:00 a 21:00 hrs.", foda: { fortalezas: "Alcance masivo: El 69% de la audiencia en FB son 'No seguidores'.", oportunidades: "Convertir al 5% de los 'No seguidores' para crecimiento exponencial.", debilidades: "Baja Conversión: Crecimiento de seguidores es apenas del 1%.", amenazas: "Perder el impulso viral si no se captura la atención rápidamente." } },
-                            instagram: { impresiones: 50819, seguidoresNuevos: 124, interaccion: 4.31, meta: 15.0, hombres: 62.3, mujeres: 37.7, frecuencia: "72 contenidos (2.4/día)", formato: "Reels / Encuestas", metasText: "Aumentar la interacción en el feed (actual 2.4%).", recomendacion: "Tono profesional y dinámico (menos política tradicional, más gestión técnica).", foda: { fortalezas: "Audiencia Definida: Nicho muy claro de hombres jóvenes-adultos (25-34 años).", oportunidades: "Generar debate con encuestas técnicas sobre servicios o tecnología.", debilidades: "Concentración Geográfica: 62.5% está en CDMX; falta penetración en Edomex.", amenazas: "Saturación si el contenido se vuelve monótono." } },
+                            facebook: { impresiones: 105713, seguidoresNuevos: 68, interaccion: 2.16, meta: 4.0, hombres: 72, mujeres: 28, frecuencia: "6 Reels, 12 Fotos, 2 Textos, 1 Compartida (21 total)", formato: "Reels (47%), Fotos (41.7%), Texto (8.6%), Otros (2.7%)", metasText: "Duplicar la tasa de nuevos seguidores mensuales mediante CTAs.", recomendacion: "Publicar álbumes de fotos semanales. Horarios de Oro: 18:00 a 21:00 hrs.", foda: { fortalezas: "Alcance masivo: El 69% de la audiencia en FB son 'No seguidores'.", oportunidades: "Convertir al 5% de los 'No seguidores' para crecimiento exponencial.", debilidades: "Baja Conversión: Crecimiento de seguidores es apenas del 1%.", amenazas: "Perder el impulso viral si no se captura la atención rápidamente." } },
+                            instagram: { impresiones: 50819, seguidoresNuevos: 124, interaccion: 4.31, meta: 15.0, hombres: 62.3, mujeres: 37.7, frecuencia: "72 contenidos (2.4/día)", formato: "Reels / Encuestas", metasText: "Aumentar la interacción en el feed (actual 2.4%).", recomendacion: "Tono profesional y dinámico (menos política tradicional, más gestión técnica).", foda: { fortalezas: "Audiencia Definida: Nicho muy claro de hombres jóvenes-adultos (25-34 años).", oportunidades: "Generar debate.", debilidades: "Aumentar la interacción en publicaciones del feed.", amenazas: "Saturación si el contenido se vuelve monótono." } },
                             tiktok: { impresiones: 0, seguidoresNuevos: 0, interaccion: 0.0, meta: 2.0, hombres: 50, mujeres: 50, frecuencia: "Pendiente", formato: "Pendiente", metasText: "Pendiente", recomendacion: "Pendiente", foda: { fortalezas: "Pendiente de análisis.", oportunidades: "Pendiente de análisis.", debilidades: "Pendiente de análisis.", amenazas: "Pendiente de análisis." } }
                         }
                     }
@@ -170,7 +170,7 @@
     <aside class="w-72 bg-white flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.02)] z-20 shrink-0 border-r border-gray-100">
         
         <div class="p-6 border-b border-gray-100 bg-gray-50/50">
-            <h1 class="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">Campaña OS</h1>
+            <h1 class="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">DASHBOARD</h1>
             <p class="text-xs font-bold text-brand-maroon tracking-wider uppercase">Ximena Molina</p>
         </div>
 
@@ -324,7 +324,7 @@
             </header>
 
             <div x-show="pestañaRedes === 'general'" x-transition class="space-y-8">
-                <div><h2 class="text-2xl font-extrabold text-gray-900">Métricas Globales Digitales</h2><p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p></div>
+                <div><h2 class="text-2xl font-extrabold text-gray-900">Métricas Generales</h2><p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-eye mr-1"></i> Impacto Total</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalImpresiones.toLocaleString()"></h3></div>
                     <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-users mr-1"></i> Crecimiento Global</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3></div>
@@ -371,7 +371,7 @@
             </div>
 
             <div x-show="pestañaRedes === 'metas'" x-cloak x-transition class="space-y-6">
-                 <div><h2 class="text-2xl font-extrabold text-gray-900">Directrices Estratégicas</h2><p class="text-sm text-gray-500 mt-1">Recomendaciones de campaña.</p></div>
+                 <div><h2 class="text-2xl font-extrabold text-gray-900">Estratégias</h2><p class="text-sm text-gray-500 mt-1">Recomendaciones</p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-[#C13584]">
                         <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-instagram"></i> Instagram</h3>
