@@ -50,7 +50,7 @@
         };
 
         const db = {
-                       "AMPLIACION LOMAS DE SAN BERNABE": { detallesSecciones: [{ sec: "3040", nominal: 2311 }, { sec: "3041", nominal: 1304 }, { sec: "3070", nominal: 1318 }, { sec: "3071", nominal: 2059 }], listaNominal: 6992, mujeres: 3668, hombres: 3324, jovenes: 1670, edadesMujeres: [36, 62, 345, 373, 341, 332, 362, 355, 364, 263, 238, 597], edadesHombres: [62, 76, 334, 382, 338, 342, 298, 319, 289, 215, 211, 458], votos2015: { morena: 721, pan: 180, pri: 592 }, votos2018: { morena: 2494, pan: 579, pri: 768 }, votos2021: { morena: 1432, pan: 438, pri: 915 }, votos2024: { morena: 3500, pan: 500, pri: 800 }, encuesta: { morena: 55, pan: 15, pri: 12, indecisos: 18 } },
+            "AMPLIACION LOMAS DE SAN BERNABE": { detallesSecciones: [{ sec: "3040", nominal: 2311 }, { sec: "3041", nominal: 1304 }, { sec: "3070", nominal: 1318 }, { sec: "3071", nominal: 2059 }], listaNominal: 6992, mujeres: 3668, hombres: 3324, jovenes: 1670, edadesMujeres: [36, 62, 345, 373, 341, 332, 362, 355, 364, 263, 238, 597], edadesHombres: [62, 76, 334, 382, 338, 342, 298, 319, 289, 215, 211, 458], votos2015: { morena: 721, pan: 180, pri: 592 }, votos2018: { morena: 2494, pan: 579, pri: 768 }, votos2021: { morena: 1432, pan: 438, pri: 915 }, votos2024: { morena: 3500, pan: 500, pri: 800 }, encuesta: { morena: 55, pan: 15, pri: 12, indecisos: 18 } },
             "AMPLIACION POTRERILLO": { detallesSecciones: [{ sec: "3068", nominal: 1319 }, { sec: "3074", nominal: 2004 }], listaNominal: 3323, mujeres: 1774, hombres: 1549, jovenes: 739, edadesMujeres: [22, 28, 172, 179, 151, 161, 149, 145, 137, 127, 98, 405], edadesHombres: [27, 36, 176, 150, 163, 141, 147, 121, 116, 92, 101, 279], votos2015: { morena: 388, pan: 91, pri: 282 }, votos2018: { morena: 1113, pan: 251, pri: 379 }, votos2021: { morena: 673, pan: 226, pri: 418 }, votos2024: { morena: 1724, pan: 236, pri: 345 }, encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 } },
             "ATACAXCO": { detallesSecciones: [{ sec: "3036", nominal: 1319 }, { sec: "3037", nominal: 2169 }, { sec: "3020", nominal: 1433 }], listaNominal: 4921, mujeres: 2631, hombres: 2290, jovenes: 1083, edadesMujeres: [21, 41, 237, 240, 243, 222, 238, 236, 231, 203, 174, 545], edadesHombres: [37, 43, 246, 219, 216, 219, 199, 185, 175, 149, 153, 449], votos2015: { morena: 601, pan: 168, pri: 367 }, votos2018: { morena: 1714, pan: 419, pri: 502 }, votos2021: { morena: 1042, pan: 351, pri: 618 }, votos2024: { morena: 2554, pan: 379, pri: 479 }, encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 } },
             "BARROS SIERRA": { detallesSecciones: [{ sec: "3035", nominal: 1802 }, { sec: "3034", nominal: 1073 }, { sec: "3023", nominal: 1221 }, { sec: "3020", nominal: 1433 }], listaNominal: 5529, mujeres: 2983, hombres: 2546, jovenes: 1269, edadesMujeres: [34, 47, 269, 283, 260, 244, 259, 238, 267, 228, 201, 653], edadesHombres: [44, 47, 289, 260, 243, 233, 234, 206, 193, 169, 168, 460], votos2015: { morena: 669, pan: 235, pri: 433 }, votos2018: { morena: 1916, pan: 493, pri: 596 }, votos2021: { morena: 1111, pan: 395, pri: 730 }, votos2024: { morena: 2850, pan: 418, pri: 569 }, encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 } },
@@ -93,7 +93,6 @@
             "TIERRA UNIDA": { detallesSecciones: [{ sec: "3118", nominal: 3496 }], listaNominal: 3496, mujeres: 1854, hombres: 1642, jovenes: 959, edadesMujeres: [20, 52, 237, 192, 197, 213, 161, 174, 155, 147, 116, 190], edadesHombres: [24, 33, 218, 183, 180, 215, 156, 147, 124, 108, 94, 160], votos2015: { morena: 223, pan: 35, pri: 226 }, votos2018: { morena: 1121, pan: 178, pri: 396 }, votos2021: { morena: 675, pan: 130, pri: 382 }, votos2024: { morena: 1393, pan: 254, pri: 300 }, encuesta: { morena: 50, pan: 25, pri: 12, indecisos: 13 } },
             "VISTA HERMOSA": generarSimulacion(["3037", "3042", "3043"])
         };
-
 
         const calendarioData = [
             {
@@ -194,43 +193,60 @@
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('megaDashboard', () => ({
-                moduloActivo: 'agenda', // Iniciar en agenda para ver el cambio
+                moduloActivo: 'territorio', 
                 pestañaRedes: 'general', 
                 mesSeleccionado: 'marzo_2026',
 
-                // Datos de redes omitidos parcialmente para resumir, pero mantenemos la estructura
                 historicoRedes: {
+                    'enero_2026': {
+                        mes: 'Enero', anio: '2026',
+                        plataformas: {
+                            facebook: { impresiones: 81622, seguidoresNuevos: 26, interaccion: 2.50, meta: 4.0, hombres: 74, mujeres: 26, frecuencia: "16 publicaciones", formato: "El Reel es dominante...", metasText: "Mejorar la tasa de interacción.", recomendacion: "Subir reels.", foda: { fortalezas: "Es la red que más gente te ve.", oportunidades: "La plataforma requiere formatos variados.", debilidades: "Baja interacción.", amenazas: "Estancamiento." } },
+                            instagram: { impresiones: 69256, seguidoresNuevos: 558, interaccion: 11.50, meta: 15.0, hombres: 62.1, mujeres: 37.9, frecuencia: "5 Reels, 1 pub, 58 historias.", formato: "Los Reels son los más efectivos.", metasText: "Llegar a los 10k seguidores.", recomendacion: "Uso de CTA.", foda: { fortalezas: "Buen alcance.", oportunidades: "Cuidar el hook inicial.", debilidades: "Baja conversión.", amenazas: "Métricas caen fuera de horarios pico." } },
+                            tiktok: { impresiones: 31000, seguidoresNuevos: 369, interaccion: 17.94, meta: 2.0, hombres: 74, mujeres: 26, frecuencia: "4 Tiktoks", formato: "Vídeos cortos.", metasText: "Mantener retención.", recomendacion: "Mejorar hooks.", foda: { fortalezas: "Muy buena retención.", oportunidades: "Restricciones.", debilidades: "Picos altos y bajos.", amenazas: "Audiencia alta en Hombres." } }
+                        }
+                    },
+                    'febrero_2026': {
+                        mes: 'Febrero', anio: '2026',
+                        plataformas: {
+                            facebook: { impresiones: 69163, seguidoresNuevos: 30, interaccion: 1.21, meta: 4.0, hombres: 73, mujeres: 27, frecuencia: "15 Publicaciones", formato: "Fotos generaron mitad de interacciones.", metasText: "Incrementar compartidos.", recomendacion: "Enfoca el CTA.", foda: { fortalezas: "El algoritmo te beneficia.", oportunidades: "Variedad de nichos.", debilidades: "Faltan sonidos en tendencia.", amenazas: "Poco tráfico de seguidores." } },
+                            instagram: { impresiones: 35701, seguidoresNuevos: 110, interaccion: 4.33, meta: 3.0, hombres: 77, mujeres: 23, frecuencia: "52 Historias", formato: "Historias", metasText: "Aumentar seguidores.", recomendacion: "Convierte reels en contenido específico.", foda: { fortalezas: "Sabes retener.", oportunidades: "Mucha actividad.", debilidades: "Falta CTA más fuerte.", amenazas: "Alcance cae en primeros segundos." } },
+                            tiktok: { impresiones: 1343, seguidoresNuevos: 142, interaccion: 17.65, meta: 2.0, hombres: 66, mujeres: 33, frecuencia: "4 Publicaciones", formato: "Videos de seguimiento.", metasText: "Tráfico en 'siguiendo'.", recomendacion: "Mejorar biografía.", foda: { fortalezas: "Capacidad de viralización.", oportunidades: "Temas en tendencia.", debilidades: "Visualizaciones cayeron.", amenazas: "Dependencia del algoritmo." } }
+                        }
+                    },
                     'marzo_2026': {
                         mes: 'Marzo', anio: '2026',
                         plataformas: {
-                            facebook: { impresiones: 105713, seguidoresNuevos: 68, interaccion: 2.16, meta: 4.0 },
-                            instagram: { impresiones: 50819, seguidoresNuevos: 124, interaccion: 4.31, meta: 15.0 },
-                            tiktok: { impresiones: 0, seguidoresNuevos: 0, interaccion: 0.0, meta: 2.0 }
+                            facebook: { impresiones: 105713, seguidoresNuevos: 68, interaccion: 2.16, meta: 4.0, hombres: 72, mujeres: 28, frecuencia: "6 Reels, 12 Fotos, 2 Textos, 1 Compartida (21 total)", formato: "Reels (47%), Fotos (41.7%), Texto (8.6%), Otros (2.7%)", metasText: "Duplicar la tasa de nuevos seguidores mensuales mediante CTAs.", recomendacion: "Publicar álbumes de fotos semanales. Horarios de Oro: 18:00 a 21:00 hrs.", foda: { fortalezas: "Alcance masivo: El 69% de la audiencia en FB son 'No seguidores'.", oportunidades: "Convertir al 5% de los 'No seguidores' para crecimiento exponencial.", debilidades: "Baja Conversión: Crecimiento de seguidores es apenas del 1%.", amenazas: "Perder el impulso viral si no se captura la atención rápidamente." } },
+                            instagram: { impresiones: 50819, seguidoresNuevos: 124, interaccion: 4.31, meta: 15.0, hombres: 62.3, mujeres: 37.7, frecuencia: "72 contenidos (2.4/día)", formato: "Reels", metasText: "Aumentar la interacción en el feed (actual 2.4%).", recomendacion: "Tono profesional y dinámico (menos política tradicional, más gestión técnica).", foda: { fortalezas: "Audiencia Definida: Nicho muy claro de hombres jóvenes-adultos (25-34 años).", oportunidades: "Generar debate.", debilidades: "Aumentar la interacción en publicaciones del feed.", amenazas: "Saturación si el contenido se vuelve monótono." } },
+                            tiktok: { impresiones: 0, seguidoresNuevos: 0, interaccion: 0.0, meta: 2.0, hombres: 50, mujeres: 50, frecuencia: "Pendiente", formato: "Pendiente", metasText: "Pendiente", recomendacion: "Pendiente", foda: { fortalezas: "Pendiente de análisis.", oportunidades: "Pendiente de análisis.", debilidades: "Pendiente de análisis.", amenazas: "Pendiente de análisis." } }
                         }
                     }
                 },
 
-                // LÓGICA DEL NUEVO CALENDARIO (Solo Viernes y Domingos)
+                get datosMes() { return this.historicoRedes[this.mesSeleccionado]; },
+                get mes() { return this.datosMes.mes; },
+                get anio() { return this.datosMes.anio; },
+                get plataformas() { return this.datosMes.plataformas; },
+                get totalImpresiones() { return this.plataformas.facebook.impresiones + this.plataformas.instagram.impresiones + this.plataformas.tiktok.impresiones; },
+                get totalSeguidores() { return this.plataformas.facebook.seguidoresNuevos + this.plataformas.instagram.seguidoresNuevos + this.plataformas.tiktok.seguidoresNuevos; },
+                get promedioInteraccion() { return ((this.plataformas.facebook.interaccion + this.plataformas.instagram.interaccion + this.plataformas.tiktok.interaccion) / 3).toFixed(1); },
+                get dataActiva() { return (this.pestañaRedes === 'general' || this.pestañaRedes === 'metas') ? this.plataformas.instagram : this.plataformas[this.pestañaRedes]; },
+                get maxInteraccion() { return Math.max( this.plataformas.facebook.interaccion, this.plataformas.facebook.meta, this.plataformas.instagram.interaccion, this.plataformas.instagram.meta, this.plataformas.tiktok.interaccion, this.plataformas.tiktok.meta, 10 ); },
+
+                // Variables de la Agenda
                 mesesDisponibles: ['Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre'],
                 mesActivoIndex: 0,
                 anioCalendario: 2026,
                 agendaData: calendarioData,
 
-                get mesActualNombre() {
-                    return this.mesesDisponibles[this.mesActivoIndex];
-                },
-
-                get mesActualData() {
-                    return this.agendaData.find(m => m.mes === this.mesActualNombre) || { eventos: [] };
-                },
-
-                // Convertir el nombre del mes a índice de Date de JavaScript (0 = Enero, 4 = Mayo, etc.)
+                get mesActualNombre() { return this.mesesDisponibles[this.mesActivoIndex]; },
+                get mesActualData() { return this.agendaData.find(m => m.mes === this.mesActualNombre) || { eventos: [] }; },
                 get mesJsIndex() {
                     const mapaMeses = { 'Mayo': 4, 'Junio': 5, 'Julio': 6, 'Agosto': 7, 'Septiembre': 8, 'Octubre': 9, 'Noviembre': 10 };
                     return mapaMeses[this.mesActualNombre];
                 },
-
-                // Generar la cuadrícula dinámica de ese mes solo para Viernes (5) y Domingo (0)
+                
                 get diasCalendarioDinámico() {
                     const year = this.anioCalendario;
                     const month = this.mesJsIndex;
@@ -238,43 +254,25 @@
                     let semanas = [];
                     let filaActual = { viernes: null, domingo: null };
 
-                    // Si el mes empieza en domingo o sabado, atrapamos el domingo en la primera fila (con viernes vacio)
-                    // Para que siempre queden pareados Viernes y Domingo del mismo fin de semana
-                    
                     while (date.getMonth() === month) {
                         let dayOfWeek = date.getDay();
                         let dateStr = String(date.getDate()).padStart(2, '0');
 
-                        if (dayOfWeek === 0) { // Domingo
-                            filaActual.domingo = {
-                                fecha: dateStr,
-                                eventos: this.mesActualData.eventos.filter(e => e.dia === dateStr)
-                            };
+                        if (dayOfWeek === 0) { 
+                            filaActual.domingo = { fecha: dateStr, eventos: this.mesActualData.eventos.filter(e => e.dia === dateStr) };
                             semanas.push(filaActual);
-                            filaActual = { viernes: null, domingo: null }; // Reiniciar la fila para la siguiente semana
-                        } else if (dayOfWeek === 5) { // Viernes
-                            filaActual.viernes = {
-                                fecha: dateStr,
-                                eventos: this.mesActualData.eventos.filter(e => e.dia === dateStr)
-                            };
+                            filaActual = { viernes: null, domingo: null }; 
+                        } else if (dayOfWeek === 5) { 
+                            filaActual.viernes = { fecha: dateStr, eventos: this.mesActualData.eventos.filter(e => e.dia === dateStr) };
                         }
                         date.setDate(date.getDate() + 1);
                     }
-
-                    // Si el mes termina y nos quedamos con un viernes colgado que aún no se pusheó (porque el domingo cae en el mes siguiente)
-                    if (filaActual.viernes !== null) {
-                        semanas.push(filaActual);
-                    }
-
+                    if (filaActual.viernes !== null) { semanas.push(filaActual); }
                     return semanas;
                 },
 
-                mesAnterior() {
-                    if (this.mesActivoIndex > 0) this.mesActivoIndex--;
-                },
-                mesSiguiente() {
-                    if (this.mesActivoIndex < this.mesesDisponibles.length - 1) this.mesActivoIndex++;
-                },
+                mesAnterior() { if (this.mesActivoIndex > 0) this.mesActivoIndex--; },
+                mesSiguiente() { if (this.mesActivoIndex < this.mesesDisponibles.length - 1) this.mesActivoIndex++; },
 
                 init() {
                     this.$watch('moduloActivo', value => {
@@ -296,6 +294,7 @@
 <body class="text-gray-800 font-sans h-screen flex overflow-hidden" x-data="megaDashboard">
 
     <aside class="w-72 bg-white flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.02)] z-20 shrink-0 border-r border-gray-100">
+        
         <div class="p-6 border-b border-gray-100 bg-gray-50/50">
             <h1 class="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">DASHBOARD</h1>
             <p class="text-xs font-bold text-brand-maroon tracking-wider uppercase">Ximena Molina</p>
@@ -320,30 +319,325 @@
             </button>
         </div>
         
-        <div class="flex-1 overflow-y-auto no-scrollbar py-4" x-show="moduloActivo === 'territorio'">
-            <div class="px-4 space-y-6">
+        <div class="flex-1 overflow-y-auto no-scrollbar py-4">
+            
+            <div x-show="moduloActivo === 'territorio'" x-transition.opacity.duration.300ms class="px-4 space-y-6">
                 <div>
                     <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Unidades Territoriales (42)</h2>
                     <nav class="space-y-1" id="coloniaMenu"></nav>
                 </div>
+                <div>
+                    <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Herramientas</h2>
+                    <button onclick="abrirModalConstruccion()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 transition-colors">
+                        <i class="fa-solid fa-clipboard-question w-5 text-gray-400"></i> Captura Encuestas
+                    </button>
+                </div>
             </div>
+
+            <div x-show="moduloActivo === 'redes'" x-cloak x-transition.opacity.duration.300ms class="px-4 space-y-6">
+                <div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Métricas de Plataforma</p>
+                    <nav class="space-y-1">
+                        <button @click="pestañaRedes = 'general'" :class="pestañaRedes === 'general' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-solid fa-chart-line w-5 text-center"></i> General</button>
+                        <button @click="pestañaRedes = 'instagram'" :class="pestañaRedes === 'instagram' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-brands fa-instagram w-5 text-center text-lg"></i> Instagram</button>
+                        <button @click="pestañaRedes = 'facebook'" :class="pestañaRedes === 'facebook' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-brands fa-facebook w-5 text-center text-lg"></i> Facebook</button>
+                        <button @click="pestañaRedes = 'tiktok'" :class="pestañaRedes === 'tiktok' ? 'bg-brand-maroon text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"><i class="fa-brands fa-tiktok w-5 text-center text-lg"></i> TikTok</button>
+                    </nav>
+                </div>
+                <div>
+                    <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Análisis</h2>
+                    <button @click="pestañaRedes = 'metas'" :class="pestañaRedes === 'metas' ? 'bg-brand-yellow text-brand-dark shadow-md' : 'text-gray-500 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-bold text-sm"><i class="fa-solid fa-bullseye w-5 text-center text-lg"></i> Estrategia</button>
+                </div>
+            </div>
+
         </div>
     </aside>
 
     <main class="flex-1 overflow-y-auto no-scrollbar relative w-full">
 
-        <!-- Módulos Territorio, Redes y Adultos colapsados para centrarse en Agenda -->
+        <!-- Módulo: Territorio -->
         <div x-show="moduloActivo === 'territorio'" x-transition.opacity.duration.400ms class="p-8 max-w-7xl mx-auto space-y-6">
+            
             <div class="flex justify-between items-center mb-6">
                 <div>
                     <h2 id="uiColoniaName" class="text-3xl font-extrabold text-gray-900">Cargando...</h2>
                     <p id="uiSeccionesSubtitle" class="text-gray-400 text-sm mt-1 font-medium">-- Secciones • Distrito Local Contreras</p>
                 </div>
+                <button onclick="abrirModalConstruccion()" class="bg-brand-maroon hover:bg-red-900 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-red-900/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i> Registrar Encuesta
+                </button>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50"><div class="text-gray-400 text-[10px] font-bold tracking-wider mb-4 uppercase">Lista Nominal Total</div><div id="uiListaNominal" class="text-4xl font-black text-gray-900 mb-2">--</div></div>
-                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50"><div class="text-gray-400 text-[10px] font-bold tracking-wider mb-4 uppercase">Votos MORENA (2024)</div><div id="uiVotos2024" class="text-4xl font-black text-brand-maroon mb-2">--</div></div>
-                <div class="bg-brand-dark rounded-2xl p-6 custom-shadow"><div class="text-brand-yellow text-[10px] font-bold tracking-wider mb-4 uppercase">Intención de Voto (Encuesta)</div><div id="uiIntencion" class="text-4xl font-black text-white mb-2">--<span class="text-xl text-gray-400">%</span></div></div>
+                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50">
+                    <div class="text-gray-400 text-[10px] font-bold tracking-wider mb-4 uppercase">Lista Nominal Total</div>
+                    <div id="uiListaNominal" class="text-4xl font-black text-gray-900 mb-2">--</div>
+                    <div class="text-xs font-semibold text-emerald-500">Padrón Electoral (100%)</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50">
+                    <div class="text-gray-400 text-[10px] font-bold tracking-wider mb-4 uppercase">Votos MORENA (2024)</div>
+                    <div id="uiVotos2024" class="text-4xl font-black text-brand-maroon mb-2">--</div>
+                    <div id="uiCrecimiento" class="text-xs font-semibold text-gray-500">Crecimiento vs 2021</div>
+                </div>
+                <div class="bg-brand-dark rounded-2xl p-6 custom-shadow relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-brand-maroon opacity-30 rounded-full blur-2xl"></div>
+                    <div class="text-brand-yellow text-[10px] font-bold tracking-wider mb-4 uppercase relative z-10">Intención de Voto (Encuesta)</div>
+                    <div id="uiIntencion" class="text-4xl font-black text-white mb-2 relative z-10">--<span class="text-xl text-gray-400">%</span></div>
+                    <div class="text-xs font-bold text-brand-yellow flex justify-between items-center relative z-10 mt-3">
+                        <span>Candidatura Local</span>
+                        <span class="bg-white/10 px-2 py-1 rounded cursor-pointer" onclick="abrirModalConstruccion()">Próximamente</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-2">
+                <div class="flex items-center justify-between mb-4"><h3 class="text-sm font-bold text-gray-900">Desglose por Sección Electoral</h3><span class="text-xs font-medium text-gray-500">Peso en la colonia</span></div>
+                <div id="uiSeccionesGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 flex flex-col justify-center">
+                    <h3 class="text-sm font-bold text-gray-900 mb-6">Demografía</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-end mb-2"><span class="text-xs font-semibold text-gray-500">Mujeres</span><span id="uiTextMujeres" class="text-sm font-bold text-gray-900">--</span></div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div id="uiBarMujeres" class="h-full bg-[#8B5CF6] transition-all duration-700"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-end mb-2"><span class="text-xs font-semibold text-gray-500">Hombres</span><span id="uiTextHombres" class="text-sm font-bold text-gray-900">--</span></div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div id="uiBarHombres" class="h-full bg-[#3B82F6] transition-all duration-700"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-end mb-2"><span class="text-xs font-semibold text-gray-500">Jóvenes (18-29)</span><span id="uiTextJovenes" class="text-sm font-bold text-gray-900">--</span></div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div id="uiBarJovenes" class="h-full bg-brand-dark transition-all duration-700"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50 col-span-2">
+                    <h3 class="text-sm font-bold text-gray-900 mb-2">Pirámide Poblacional</h3>
+                    <div class="w-full h-56"><canvas id="pyramidChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
+                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50">
+                    <h3 class="text-sm font-bold text-gray-900 mb-4">Votación Histórica</h3>
+                    <div class="w-full h-56"><canvas id="historicalChart"></canvas></div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 custom-shadow border border-gray-100/50">
+                    <h3 class="text-sm font-bold text-gray-900 mb-4">Competencia (Simulación)</h3>
+                    <div class="w-full h-56 relative">
+                        <div class="absolute inset-0 z-10 bg-white/40 backdrop-blur-[2px] flex items-center justify-center rounded-xl">
+                            <button onclick="abrirModalConstruccion()" class="bg-brand-dark text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg hover:bg-gray-800">Activar Módulo</button>
+                        </div>
+                        <canvas id="pollChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo: Redes -->
+        <div x-show="moduloActivo === 'redes'" x-cloak x-transition.opacity.duration.400ms class="p-8 max-w-7xl mx-auto">
+            
+            <header class="flex items-center justify-between mb-8">
+                <div class="bg-white rounded-full shadow-sm py-1.5 px-1.5 border border-gray-100 flex items-center gap-1">
+                    <template x-for="(datos, idMes) in historicoRedes" :key="idMes">
+                        <button @click="mesSeleccionado = idMes" 
+                                :class="mesSeleccionado === idMes ? 'bg-brand-dark text-white shadow-md' : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'"
+                                class="px-6 py-2 text-sm font-bold rounded-full transition-all duration-300"
+                                x-text="datos.mes + ' ' + datos.anio"></button>
+                    </template>
+                </div>
+            </header>
+
+            <div x-show="pestañaRedes === 'general'" x-transition class="space-y-8">
+                <div><h2 class="text-2xl font-extrabold text-gray-900">Métricas Generales</h2><p class="text-sm text-gray-500 mt-1">Acumulado de todas las plataformas • <span x-text="mes"></span></p></div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-eye mr-1"></i> Impacto Total</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalImpresiones.toLocaleString()"></h3></div>
+                    <div class="bg-white rounded-2xl p-6 custom-shadow flex flex-col justify-between"><p class="text-[10px] font-bold text-gray-400 mb-4 uppercase"><i class="fa-solid fa-users mr-1"></i> Crecimiento Global</p><h3 class="text-4xl font-extrabold text-gray-800" x-text="totalSeguidores.toLocaleString()"></h3></div>
+                    <div class="bg-brand-dark text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 w-24 h-24 bg-brand-maroon opacity-40 rounded-full blur-2xl"></div>
+                        <p class="text-[10px] font-bold text-gray-400 mb-4 uppercase relative z-10"><i class="fa-solid fa-bolt mr-1 text-brand-yellow"></i> Interacción Promedio</p>
+                        <div class="flex items-end justify-between relative z-10"><h3 class="text-4xl font-extrabold text-white"><span x-text="promedioInteraccion"></span><span class="text-xl text-gray-300">%</span></h3></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow">
+                        <h3 class="text-sm font-bold text-gray-800 mb-6">Impresiones por Plataforma</h3>
+                        <div class="space-y-5">
+                            <div><div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>Instagram</span><span class="text-gray-900" x-text="plataformas.instagram.impresiones.toLocaleString()"></span></div><div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-maroon" :style="'width: ' + ((plataformas.instagram.impresiones / totalImpresiones) * 100) + '%'"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>Facebook</span><span class="text-gray-900" x-text="plataformas.facebook.impresiones.toLocaleString()"></span></div><div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-blue" :style="'width: ' + ((plataformas.facebook.impresiones / totalImpresiones) * 100) + '%'"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold text-gray-500 mb-1.5"><span>TikTok</span><span class="text-gray-900" x-text="plataformas.tiktok.impresiones.toLocaleString()"></span></div><div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-dark" :style="'width: ' + ((plataformas.tiktok.impresiones / totalImpresiones) * 100) + '%'"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="pestañaRedes !== 'general' && pestañaRedes !== 'metas'" x-cloak x-transition class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-2xl p-5 custom-shadow"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Impresiones</p><h3 class="text-3xl font-extrabold text-gray-800" x-text="dataActiva.impresiones.toLocaleString()"></h3></div>
+                    <div class="bg-white rounded-2xl p-5 custom-shadow"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Seguidores</p><h3 class="text-3xl font-extrabold text-gray-800" x-text="dataActiva.seguidoresNuevos.toLocaleString()"></h3></div>
+                    <div class="bg-white rounded-2xl p-5 custom-shadow"><p class="text-[10px] font-bold text-gray-400 mb-2 uppercase">Interacción</p><h3 class="text-3xl font-extrabold text-gray-800"><span x-text="dataActiva.interaccion"></span>%</h3></div>
+                    <div class="bg-brand-dark text-white rounded-2xl p-5 shadow-lg"><p class="text-[10px] font-bold text-brand-yellow mb-2 uppercase">Meta Fijada</p><h3 class="text-3xl font-extrabold text-white"><span x-text="dataActiva.meta"></span>%</h3></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow border-l-4 border-l-brand-maroon">
+                        <h3 class="text-sm font-bold text-gray-800 mb-4">Contenido Destacado</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-3 rounded-xl"><p class="text-[10px] font-bold text-gray-400 uppercase mb-1">Volumen Creado</p><p class="text-sm font-bold text-gray-800" x-text="dataActiva.frecuencia"></p></div>
+                            <div class="bg-gray-50 p-3 rounded-xl"><p class="text-[10px] font-bold text-gray-400 uppercase mb-1">Formato Estrella</p><p class="text-xs text-gray-600" x-text="dataActiva.formato"></p></div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 custom-shadow grid grid-cols-2 gap-4">
+                        <div><h4 class="font-bold text-[10px] uppercase text-emerald-500 mb-1">F</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.fortalezas"></p></div>
+                        <div><h4 class="font-bold text-[10px] uppercase text-brand-blue mb-1">O</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.oportunidades"></p></div>
+                        <div><h4 class="font-bold text-[10px] uppercase text-brand-yellow mb-1">D</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.debilidades"></p></div>
+                        <div><h4 class="font-bold text-[10px] uppercase text-brand-maroon mb-1">A</h4><p class="text-xs text-gray-500 leading-tight" x-text="dataActiva.foda.amenazas"></p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="pestañaRedes === 'metas'" x-cloak x-transition class="space-y-6">
+                 <div><h2 class="text-2xl font-extrabold text-gray-900">Estratégias</h2><p class="text-sm text-gray-500 mt-1">Recomendaciones</p></div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-[#C13584]">
+                        <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-instagram"></i> Instagram</h3>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p><p class="text-sm text-gray-700 mb-4" x-text="plataformas.instagram.metasText"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p><p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.instagram.recomendacion"></p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-brand-blue">
+                        <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-facebook"></i> Facebook</h3>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p><p class="text-sm text-gray-700 mb-4" x-text="plataformas.facebook.metasText"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p><p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.facebook.recomendacion"></p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 custom-shadow border-t-4 border-t-brand-dark">
+                        <h3 class="text-base font-bold text-gray-800 mb-4"><i class="fa-brands fa-tiktok"></i> TikTok</h3>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Objetivo</p><p class="text-sm text-gray-700 mb-4" x-text="plataformas.tiktok.metasText"></p>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-1">Acción</p><p class="text-sm font-semibold text-brand-maroon" x-text="plataformas.tiktok.recomendacion"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Módulo: Adultos -->
+        <div x-show="moduloActivo === 'adultos'" x-cloak x-transition.opacity.duration.400ms class="p-8 max-w-7xl mx-auto space-y-8">
+            
+            <header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900">Programa Adultos Mayores</h2>
+                    <p class="text-gray-500 mt-1 font-medium text-sm">Seguimiento de visitas y retroalimentación ciudadana</p>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Visitadas</p>
+                        <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-4xl font-black text-gray-900 mb-1">5</h3>
+                    <p class="text-xs font-medium text-gray-500 leading-relaxed">Aztecas, Barros Sierra, Cazulco, Vista Hermosa y Casi Hortensia.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Pendientes</p>
+                        <div class="w-8 h-8 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-4xl font-black text-gray-900 mb-1">19</h3>
+                    <p class="text-xs font-medium text-gray-500 leading-relaxed">Visitas programadas restantes para cubrir el 100%.</p>
+                </div>
+
+                <div class="bg-gray-900 rounded-2xl p-6 shadow-xl relative overflow-hidden flex flex-col justify-center">
+                    <div class="absolute -right-6 -top-6 w-32 h-32 bg-emerald-500 opacity-20 rounded-full blur-3xl"></div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 relative z-10">Avance Total (24 Casas)</p>
+                    <div class="flex items-baseline gap-1 mb-3 relative z-10">
+                        <h3 class="text-4xl font-black text-white">21</h3>
+                        <span class="text-xl font-bold text-gray-400">%</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative z-10">
+                        <div class="h-full bg-emerald-500 rounded-full" style="width: 21%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                    <i class="fa-regular fa-comments text-gray-400"></i>
+                    ¿Cómo les gustaría que los cuidaran?
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10">
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-t-blue-500 flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-city text-xl text-blue-600"></i>
+                        </div>
+                        <h4 class="text-sm font-black text-gray-900 uppercase tracking-wider mb-4">Desde la Sociedad</h4>
+                        <ul class="space-y-4 flex-1">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-blue-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Cederles el asiento en el transporte público.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-blue-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Darles correctamente el cambio en comercios.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-blue-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Ayudarlos de manera general y ser empáticos en la calle.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-t-rose-600 flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-landmark-dome text-xl text-rose-600"></i>
+                        </div>
+                        <h4 class="text-sm font-black text-gray-900 uppercase tracking-wider mb-4">Desde el Gobierno</h4>
+                        <ul class="space-y-4 flex-1">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-rose-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Que se piensen y diseñen políticas exclusivas para ellos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-rose-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Brindarles acceso a apoyo psicológico de calidad.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-rose-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Entregar apoyos sociales para que puedan vivir plenamente.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-t-emerald-500 flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-house-chimney-heart text-xl text-emerald-600"></i>
+                        </div>
+                        <h4 class="text-sm font-black text-gray-900 uppercase tracking-wider mb-4">Desde la Familia</h4>
+                        <ul class="space-y-4 flex-1">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-emerald-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Que les tengan mucha paciencia en el día a día.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-emerald-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Involucrarlos y hacerlos sentir útiles en el hogar.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-angle-right text-emerald-500 mt-1 text-xs"></i>
+                                <span class="text-sm text-gray-600 font-medium">Brindarles compañía, plática y evitar la soledad.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -355,7 +649,6 @@
                     <p class="text-gray-500 mt-1 font-medium text-sm">Vista exclusiva de Fines de Semana (Viernes y Domingos)</p>
                 </div>
                 
-                <!-- Selector de Meses -->
                 <div class="flex items-center gap-4 bg-white px-4 py-2 rounded-2xl custom-shadow border border-gray-50">
                     <button @click="mesAnterior()" :disabled="mesActivoIndex === 0" :class="{'opacity-30 cursor-not-allowed': mesActivoIndex === 0}" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors">
                         <i class="fa-solid fa-chevron-left"></i>
@@ -370,30 +663,20 @@
                 </div>
             </header>
 
-            <!-- Cuadrícula Dinámica -->
             <div class="bg-white rounded-3xl custom-shadow overflow-hidden border border-gray-100">
-                <!-- Cabecera de Días -->
                 <div class="grid grid-cols-2 bg-gray-50 border-b border-gray-100">
-                    <div class="py-4 text-center font-bold text-sm text-gray-500 uppercase tracking-widest">
-                        <i class="fa-regular fa-calendar-check mr-1"></i> Viernes
-                    </div>
-                    <div class="py-4 text-center font-bold text-sm text-gray-500 uppercase tracking-widest border-l border-gray-100">
-                        <i class="fa-regular fa-calendar-check mr-1"></i> Domingo
-                    </div>
+                    <div class="py-4 text-center font-bold text-sm text-gray-500 uppercase tracking-widest"><i class="fa-regular fa-calendar-check mr-1"></i> Viernes</div>
+                    <div class="py-4 text-center font-bold text-sm text-gray-500 uppercase tracking-widest border-l border-gray-100"><i class="fa-regular fa-calendar-check mr-1"></i> Domingo</div>
                 </div>
 
-                <!-- Días del Mes -->
                 <div class="flex flex-col divide-y divide-gray-100">
                     <template x-for="(semana, idx) in diasCalendarioDinámico" :key="idx">
                         <div class="grid grid-cols-2 divide-x divide-gray-100 min-h-[140px]">
                             
-                            <!-- Columna Viernes -->
                             <div class="p-4 relative group transition-colors hover:bg-gray-50/50">
                                 <template x-if="semana.viernes">
                                     <div class="h-full flex flex-col">
                                         <div class="text-xl font-black text-brand-dark mb-3" x-text="semana.viernes.fecha"></div>
-                                        
-                                        <!-- Eventos del día -->
                                         <div class="space-y-3 flex-1">
                                             <template x-for="evento in semana.viernes.eventos" :key="evento.titulo">
                                                 <div class="bg-blue-50/50 border border-blue-100 p-3 rounded-xl">
@@ -411,19 +694,15 @@
                                         </div>
                                     </div>
                                 </template>
-                                <!-- Caso de viernes vacío al inicio del mes -->
                                 <template x-if="!semana.viernes">
                                     <div class="w-full h-full bg-gray-50/30"></div>
                                 </template>
                             </div>
 
-                            <!-- Columna Domingo -->
                             <div class="p-4 relative group transition-colors hover:bg-gray-50/50">
                                 <template x-if="semana.domingo">
                                     <div class="h-full flex flex-col">
                                         <div class="text-xl font-black text-brand-dark mb-3" x-text="semana.domingo.fecha"></div>
-                                        
-                                        <!-- Eventos del día -->
                                         <div class="space-y-3 flex-1">
                                             <template x-for="evento in semana.domingo.eventos" :key="evento.titulo">
                                                 <div class="bg-rose-50/50 border border-rose-100 p-3 rounded-xl">
@@ -441,7 +720,6 @@
                                         </div>
                                     </div>
                                 </template>
-                                <!-- Caso de domingo vacío al final del mes -->
                                 <template x-if="!semana.domingo">
                                     <div class="w-full h-full bg-gray-50/30"></div>
                                 </template>
@@ -456,18 +734,116 @@
                 <span class="flex items-center gap-2"><div class="w-3 h-3 rounded bg-blue-100 border border-blue-200"></div> Evento de Viernes</span>
                 <span class="flex items-center gap-2"><div class="w-3 h-3 rounded bg-rose-100 border border-rose-200"></div> Evento de Domingo</span>
             </div>
-
         </div>
+
     </main>
+                  
+    <div id="modalConstruccion" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-center transform scale-95 transition-transform duration-300">
+            <div class="w-16 h-16 bg-brand-maroon/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-lock text-brand-maroon text-2xl"></i></div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Módulo Próximamente</h3>
+            <p class="text-gray-500 mb-6 text-sm">Disponible al inicio de recorridos.</p>
+            <button onclick="cerrarModalConstruccion()" class="w-full py-2.5 bg-brand-dark text-white rounded-xl font-bold hover:bg-gray-800">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalMapa" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <i class="fa-solid fa-map text-brand-blue"></i> Mapa Cartográfico: Sección <span id="tituloMapaModal" class="text-brand-maroon"></span>
+                </h3>
+                <button onclick="cerrarModalMapa()" class="text-gray-400 hover:text-gray-800 transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 bg-gray-200 relative flex items-center justify-center overflow-hidden" id="contenedorMapaPdf">
+                <div class="text-center p-8 bg-white/80 rounded-xl shadow-sm border border-gray-100 max-w-md m-4">
+                    <i class="fa-regular fa-file-pdf text-6xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-800 font-bold text-lg">Buscando mapa de la sección...</p>
+                    <p class="text-sm text-gray-500 mt-2">Asegúrate de guardar tus mapas en una carpeta llamada <strong>mapas</strong> junto a este archivo.</p>
+                    <div class="bg-gray-100 rounded text-xs font-mono p-2 mt-4 text-left break-all text-gray-500">
+                        Ruta esperada: <br><span id="rutaMapaSugerida" class="text-brand-blue font-bold"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Scripts base para inicializar colonias (recortado en la muestra de arriba para optimizar código, pero funcional)
+        window.pyramidChartInstance = null; window.histChartInstance = null; window.pollChartInstance = null;
+        Chart.defaults.font.family = "'Inter', sans-serif"; Chart.defaults.color = '#9CA3AF';
+        
+        function initCharts() {
+            const ctxPyr = document.getElementById('pyramidChart').getContext('2d');
+            window.pyramidChartInstance = new Chart(ctxPyr, {
+                type: 'bar',
+                data: { labels: ['18','19','20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59','60-64','65+'],
+                        datasets: [{ label: 'Mujeres', data: [], backgroundColor: 'rgba(139, 92, 246, 0.8)' },
+                                   { label: 'Hombres', data: [], backgroundColor: 'rgba(59, 130, 246, 0.8)' }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { boxWidth: 8, font: {size: 10} } } }, scales: { x: { grid: { display: false } }, y: { border: { display: false }, grid: { color: '#F3F4F6' } } } }
+            });
+
+            const ctxHist = document.getElementById('historicalChart').getContext('2d');
+            window.histChartInstance = new Chart(ctxHist, {
+                type: 'line',
+                data: { labels: ['2015', '2018', '2021', '2024'],
+                        datasets: [{ label: 'MORENA', data: [], borderColor: '#791E30', backgroundColor: '#791E30', tension: 0.3, borderWidth: 3 },
+                                   { label: 'PAN', data: [], borderColor: '#0055A5', backgroundColor: '#0055A5', tension: 0.3, borderWidth: 2 },
+                                   { label: 'PRI', data: [], borderColor: '#009639', backgroundColor: '#009639', tension: 0.3, borderWidth: 2 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { boxWidth: 8, font: {size: 10} } } }, scales: { y: { beginAtZero: true, grid: { color: '#F3F4F6', drawBorder: false } }, x: { grid: { display: false } } } }
+            });
+
+            const ctxPoll = document.getElementById('pollChart').getContext('2d');
+            window.pollChartInstance = new Chart(ctxPoll, {
+                type: 'bar',
+                data: { labels: ['MORENA', 'PAN', 'PRI', 'Indecisos'],
+                        datasets: [{ data: [0,0,0,0], backgroundColor: ['#791E30', '#0055A5', '#009639', '#F4C430'], borderRadius: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false, max: 70 }, x: { grid: { display: false } } } }
+            });
+        }
+
         function loadColoniaData(coloniaName) {
             const data = db[coloniaName]; if (!data) return;
+            const formatNum = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
             document.getElementById('uiColoniaName').textContent = coloniaName;
-            document.getElementById('uiListaNominal').textContent = data.listaNominal.toLocaleString();
-            document.getElementById('uiVotos2024').textContent = data.votos2024.morena.toLocaleString();
+            document.getElementById('uiSeccionesSubtitle').textContent = `${data.detallesSecciones.length} Secciones Electorales`;
+            document.getElementById('uiListaNominal').textContent = formatNum(data.listaNominal);
+            document.getElementById('uiVotos2024').textContent = formatNum(data.votos2024.morena);
             document.getElementById('uiIntencion').innerHTML = `${data.encuesta.morena}<span class="text-2xl text-gray-400">%</span>`;
+
+            const cGrid = document.getElementById('uiSeccionesGrid'); cGrid.innerHTML = '';
+            data.detallesSecciones.forEach(sec => {
+                const pct = ((sec.nominal / data.listaNominal) * 100).toFixed(1);
+                cGrid.innerHTML += `
+                    <div class="bg-white rounded-xl p-3 border border-gray-100 shadow-sm flex flex-col justify-between group hover:border-brand-blue hover:shadow-md transition-all">
+                        <div class="flex justify-between items-start">
+                            <div><div class="text-[9px] font-bold text-gray-400 mb-0.5">SECCIÓN</div><div class="text-xl font-black text-brand-dark">${sec.sec}</div></div>
+                            <button onclick="abrirModalMapa('${sec.sec}')" class="text-gray-300 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors cursor-pointer" title="Ver Mapa de la Sección">
+                                <i class="fa-solid fa-map-location-dot text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <div class="flex justify-between items-end mb-1"><span class="text-[10px] text-gray-500">Nominal</span><span class="text-xs font-bold">${formatNum(sec.nominal)}</span></div>
+                            <div class="h-1 bg-gray-100 rounded-full"><div class="h-full bg-brand-maroon rounded-full" style="width: ${pct}%"></div></div>
+                        </div>
+                    </div>`;
+            });
+
+            const pMuj = ((data.mujeres/data.listaNominal)*100).toFixed(1); document.getElementById('uiTextMujeres').innerHTML = `${formatNum(data.mujeres)} <span class="text-[10px] text-gray-400">(${pMuj}%)</span>`; document.getElementById('uiBarMujeres').style.width = `${pMuj}%`;
+            const pHom = ((data.hombres/data.listaNominal)*100).toFixed(1); document.getElementById('uiTextHombres').innerHTML = `${formatNum(data.hombres)} <span class="text-[10px] text-gray-400">(${pHom}%)</span>`; document.getElementById('uiBarHombres').style.width = `${pHom}%`;
+            const pJov = ((data.jovenes/data.listaNominal)*100).toFixed(1); document.getElementById('uiTextJovenes').innerHTML = `${formatNum(data.jovenes)} <span class="text-[10px] text-gray-400">(${pJov}%)</span>`; document.getElementById('uiBarJovenes').style.width = `${pJov}%`;
+
+            let votos21 = data.votos2021.morena || 1;
+            let votos24 = data.votos2024.morena || 0;
+            const crecimiento = (((votos24 - votos21) / votos21) * 100).toFixed(1);
+            document.getElementById('uiCrecimiento').innerHTML = crecimiento >= 0 ? `<span class="text-emerald-500 font-bold">+${crecimiento}%</span> vs 2021` : `<span class="text-red-500 font-bold">${crecimiento}%</span> vs 2021`;
+
+            if(window.pyramidChartInstance) { window.pyramidChartInstance.data.datasets[0].data = data.edadesMujeres; window.pyramidChartInstance.data.datasets[1].data = data.edadesHombres; window.pyramidChartInstance.update(); }
+            if(window.histChartInstance) { window.histChartInstance.data.datasets[0].data = [data.votos2015.morena, data.votos2018.morena, data.votos2021.morena, data.votos2024.morena]; window.histChartInstance.data.datasets[1].data = [data.votos2015.pan, data.votos2018.pan, data.votos2021.pan, data.votos2024.pan]; window.histChartInstance.data.datasets[2].data = [data.votos2015.pri, data.votos2018.pri, data.votos2021.pri, data.votos2024.pri]; window.histChartInstance.update(); }
+            if(window.pollChartInstance) { window.pollChartInstance.data.datasets[0].data = [data.encuesta.morena, data.encuesta.pan, data.encuesta.pri, data.encuesta.indecisos]; window.pollChartInstance.update(); }
 
             document.querySelectorAll('.nav-item-terr').forEach(i => {
                 if(i.dataset.colonia === coloniaName) { i.classList.add('active'); i.classList.remove('text-gray-500', 'hover:bg-gray-50'); }
@@ -476,19 +852,67 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
             const menu = document.getElementById('coloniaMenu');
-            const colonias = Object.keys(db).sort();
-            colonias.forEach(colonia => {
-                const a = document.createElement('a'); a.href = "#"; a.dataset.colonia = colonia;
-                a.className = `nav-item-terr flex items-center gap-3 px-4 py-2 text-[13px] font-medium rounded-xl transition-all cursor-pointer text-gray-500 hover:bg-gray-50`;
-                const nombreLimpio = colonia.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-                const nombreCorto = nombreLimpio.substring(0, 26) + (nombreLimpio.length > 26 ? '...' : '');
-                a.innerHTML = `<i class="fa-solid fa-map-pin w-4 text-center"></i> ${nombreCorto}`;
-                a.onclick = (e) => { e.preventDefault(); loadColoniaData(colonia); };
-                menu.appendChild(a);
-            });
-            if(colonias.length > 0) loadColoniaData(colonias[0]); 
+            
+            if(menu && typeof db !== 'undefined') {
+                const colonias = Object.keys(db).sort();
+                
+                colonias.forEach(colonia => {
+                    const a = document.createElement('a'); a.href = "#"; a.dataset.colonia = colonia;
+                    a.className = `nav-item-terr flex items-center gap-3 px-4 py-2 text-[13px] font-medium rounded-xl transition-all cursor-pointer text-gray-500 hover:bg-gray-50`;
+                    
+                    const nombreLimpio = colonia.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+                    const nombreCorto = nombreLimpio.substring(0, 26) + (nombreLimpio.length > 26 ? '...' : '');
+
+                    a.innerHTML = `<i class="fa-solid fa-map-pin w-4 text-center"></i> ${nombreCorto}`;
+                    a.onclick = (e) => { e.preventDefault(); loadColoniaData(colonia); };
+                    menu.appendChild(a);
+                });
+                
+                if(colonias.length > 0) loadColoniaData("EL GAVILLERO"); 
+            }
         });
+
+        function abrirModalConstruccion() { const m = document.getElementById('modalConstruccion'); const c = m.querySelector('div'); m.classList.remove('hidden'); setTimeout(() => { m.classList.remove('opacity-0'); c.classList.remove('scale-95'); c.classList.add('scale-100'); }, 10); }
+        function cerrarModalConstruccion() { const m = document.getElementById('modalConstruccion'); const c = m.querySelector('div'); m.classList.add('opacity-0'); c.classList.remove('scale-100'); c.classList.add('scale-95'); setTimeout(() => m.classList.add('hidden'), 300); }
+        
+        function abrirModalMapa(seccion) { 
+            const m = document.getElementById('modalMapa'); 
+            const c = m.querySelector('div'); 
+            
+            document.getElementById('tituloMapaModal').textContent = seccion;
+            document.getElementById('rutaMapaSugerida').textContent = `mapas/${seccion}.pdf`;
+            
+            const contenedor = document.getElementById('contenedorMapaPdf');
+            
+            const iframeAnterior = contenedor.querySelector('iframe');
+            if (iframeAnterior) iframeAnterior.remove();
+
+            const iframe = document.createElement('iframe');
+            iframe.src = `mapas/${seccion}.pdf`;
+            iframe.className = 'absolute inset-0 w-full h-full z-20 bg-white';
+            iframe.frameBorder = '0';
+            
+            contenedor.appendChild(iframe);
+
+            m.classList.remove('hidden'); 
+            setTimeout(() => { m.classList.remove('opacity-0'); c.classList.remove('scale-95'); c.classList.add('scale-100'); }, 10); 
+        }
+
+        function cerrarModalMapa() { 
+            const m = document.getElementById('modalMapa'); 
+            const c = m.querySelector('div'); 
+            m.classList.add('opacity-0'); 
+            c.classList.remove('scale-100'); 
+            c.classList.add('scale-95'); 
+            
+            setTimeout(() => {
+                m.classList.add('hidden');
+                const iframeAnterior = document.getElementById('contenedorMapaPdf').querySelector('iframe');
+                if (iframeAnterior) iframeAnterior.remove();
+            }, 300); 
+        }
     </script>
 </body>
 </html>
